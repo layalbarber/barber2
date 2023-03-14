@@ -6,8 +6,8 @@ workflows:
       app_store_connect: codemagic
     environment:
       ios_signing:
-        distribution_type: app_store
-        bundle_identifier: io.codemagic.ionicsample
+        distribution_type: app_store # or: ad_hoc | development | enterprise
+        bundle_identifier: app.thebarber.owner
     scripts:
       - name: Install npm dependencies and update Cordova version
         script: | 
