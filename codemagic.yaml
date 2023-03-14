@@ -1,47 +1,75 @@
 workflows:
-      sample-workflow:
-        name: Codemagic Sample Workflow
-        max_build_duration: 120
-        instance_type: mac_mini_m1
+  ios-workflow:
+    name: iOS Workflow
+    max_build_duration: 120
+    integrations:
+      app_store_connect: codemagic
     environment:
-    
-       ios_signing:
-        distribution_type: app_store # or: ad_hoc | development | enterprise
-        bundle_identifier: com.example.id
-    cache:
-      cache_paths:
-        - $CM_BUILD_DIR/node_modules
-   scripts:
-    - name: Install npm dependencies and update Cordova version
-      script: | 
-        npm install
-        npm ci # equivalent of npm install for CI systems.
-               # Requires package-lock.json or npm-shrinkwrap.json to be present
-        cvm install 9.0.0
-        cvm use 9.0.0 
-    - name: Setup Cordova Android platform
-      script: | 
-        ionic cordova platform remove android --nosave
-        ionic cordova platform add android \
-          --confirm \
-          --no-interactive \
-          --noresources 
-    - name: Build Android Cordova App
-      script: | 
-        ionic cordova build android \
-          --release \
-          --no-interactive \
-          --prod \
-          --device
-    - name: Sign APK
-      script: | 
-        APK_PATH=$(find platforms/android/app/build/outputs/apk/release -name "*.apk" | head -1)
-        jarsigner \
-          -sigalg SHA1withRSA \
-          -digestalg SHA1 \
-          -keystore $CM_KEYSTORE_PATH \
-          -storepass $CM_KEYSTORE_PASSWORD \
-          -keypass $CM_KEY_PASSWORD \
-          $APK_PATH $CM_KEY_ALIAS         
-  artifacts:
-    - platforms/android/app/build/outputs/**/*.apk
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: io.codemagic.ionicsample
+    scripts:
+      - name: Install npm dependencies and update Cordova version
+        script: | 
+          npm install
+          npm ci # equivalent of npm install for CI systems.
+            # Requires package-lock.json or npm-shrinkwrap.json to be present
+          cvm install 9.0.0
+          cvm use 9.0.0
+          npm install -g ionic
+          ionic info  
+      -  name: Setup Cordova iOS platform
+         script: | 
+           ionic cordova platform remove ios --nosave
+           ionic cordova platform add ios \
+             --confirm \
+             --no-interactive \
+             --noresources \
+             --save
+      - name: Set up code signing settings on Xcode project
+        script: | 
+          xcode-project use-profiles
+      - name: Build ipa for distribution
+        script: | 
+          package_type=$(defaults read ~/export_options.plist method)
+          identity=$(defaults read ~/export_options.plist signingCertificate)
+          team=$(defaults read ~/export_options.plist teamID)
+          profile=$(find '/Users/builder/Library/MobileDevice/Provisioning Profiles' -name "*.mobileprovision")
+          profile_uuid=$(grep UUID -A1 -a "$profile" | grep -io "[-A-F0-9]\{36\}")
+
+          cat <<EOF > build.json
+          {
+            "ios": {
+              "release": {
+                "codeSignIdentity": "$identity",
+                "developmentTeam": "$team",
+                "packageType": "$package_type",
+                "provisioningProfile": "$profile_uuid"
+              }
+            }
+          }EOF
+          cordova build ios --release --device --buildConfig='build.json'
+    artifacts:
+      - /Users/builder/clone/platforms/ios/build/device/*.ipa
+      - /tmp/xcodebuild_logs/*.log 
+    publishing:
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
+      app_store_connect:
+        auth: integration
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
