@@ -1,8 +1,7 @@
 workflows:
   ios-workflow:
     name: iOS workflow
-    integrations:
-      app_store_connect: dev@pro71.ae
+   
     environment:
     
       xcode: latest
