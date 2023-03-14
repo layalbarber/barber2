@@ -1,13 +1,12 @@
 workflows:
   ios-workflow:
     name: iOS workflow
-    integrations:
-      app_store_connect: qsrr.net@gmail.com
+    
     environment:
     
-      xcode: latest
-      node: v16.11.1
-      npm: 6
+       ios_signing:
+        distribution_type: app_store # or: ad_hoc | development | enterprise
+        bundle_identifier: com.example.id
     cache:
       cache_paths:
         - $CM_BUILD_DIR/node_modules
