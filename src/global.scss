@@ -1,0 +1,567 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+// ... or  
+@import "~@ng-select/ng-select/themes/material.theme.css";
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import '~assets/styles/_index.css';
+@import '~assets/styles/_dark.css';
+@import '~assets/styles/_material.css';
+@import '~assets/styles/_bootstrap.css';
+@import '~assets/styles/_icons.css';
+.search-input {
+    width: auto;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 3px rgba(135, 135, 135, 0.3);
+    font-size: 14px;
+    font-family: "font_book";
+    color: #000000;
+    --padding-end: 44px;
+    --padding-start: 19px;
+    --placeholder-color: #000000;
+    --placeholder-opacity: 1;
+    border-radius: 50px;
+    margin: 19px 14px 10px;
+    .right {
+        position: absolute;
+        right: 21px;
+    }
+    .left {
+        position: absolute;
+        left: 21px;
+    }
+}
+
+ion-fab:focus {
+    outline: none;
+}
+
+.angular-editor-toolbar {
+    overflow: scroll;
+}
+
+ng-select.country-codeSelect .ng-select-container {
+    background-color: transparent;
+    border: 0px !important;
+    height: 30px;
+    min-height: 30px;
+    font-family: "proxi-regular";
+    font-size: 16px;
+    margin-top: -12px;
+}
+
+.ng-value {
+    img {
+        margin-bottom: -2px !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+    span {
+        font-size: 15px !important;
+    }
+}
+
+ng-select {
+    background-color: var(--ion-input-back);
+    text-align: center;
+    padding-top: 9px !important;
+    padding: 3px;
+    box-shadow: 0px 0px 6px 1px #eeeeee;
+    width: 96px;
+    padding-left: 3px;
+    height: 44px;
+    margin-top: 6px; 
+    border-bottom: none;
+}
+
+.ccode .ng-value-container {
+    margin-top: -5px !important;
+    margin-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.ccode .ng-select-container:after {
+    border-bottom: none;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    transition: border-color 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+
+.ng-arrow-wrapper {
+    align-self: flex-end !important;
+    bottom: 0px !important;
+}
+
+.ng-value-container {
+    margin-top: -5px !important;
+    margin-left: 12px !important;
+    padding-right: 0px !important;
+}
+
+.ng-select .ng-select-container .ng-value-container {
+    display: flex;
+    flex: 1;
+}
+
+.primary-header {
+    ion-toolbar {
+        --background: var(--ion-color-white);
+        border-bottom: 1px solid var(--ion-border-color);
+        ion-title {
+            font-size: 16px;
+            font-family: "font_medium";
+            color: var(--ion-color-black);
+        }
+    }
+}
+
+.absolute-center {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.status {
+    width: max-content;
+    padding: 3px 14px;
+    border-radius: 17px;
+    color: #fff;
+    font-family: 'font_bold';
+    font-size: 11px;
+    &.Approved {
+        background: #091167;
+    }
+    &.Complete {
+        background: #36bd66;
+    }
+    &.Cancle {
+        background: #f00;
+    }
+}
+
+ion-title {
+    color: var(--ion-color-orange) !important;
+}
+
+.err-msg {
+    margin: 0;
+    font-size: 12px;
+    color: #f00;
+    font-family: 'font_medium';
+    letter-spacing: 1.4px;
+}
+
+.no-data-small {
+    ion-icon {
+        font-size: 60px;
+    }
+    .title {
+        font-size: 18px;
+        font-family: 'font_bold';
+        margin-top: 9px;
+    }
+    .text {
+        font-size: 14px;
+        font-family: 'font_book';
+        margin-top: 5px;
+    }
+}
+
+.no-data-big {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 79%;
+    margin: auto;
+    margin-bottom: 56px;
+    ion-icon {
+        font-size: 60px;
+        margin-bottom: 13px;
+    }
+    .title {
+        font-size: 18px;
+        font-family: 'font_bold';
+        margin-top: 9px;
+        margin-bottom: 0px;
+    }
+    .text {
+        font-size: 12px;
+        font-family: 'font_book';
+        margin-top: 5px;
+    }
+}
+
+.spinner {
+    -webkit-animation: rotator 1.4s linear infinite;
+    animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(270deg);
+    }
+}
+
+.path {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+    -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+    animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+    0% {
+        stroke: #6b48ff;
+    }
+    25% {
+        stroke: #004695;
+    }
+    50% {
+        stroke: #b4a3ff;
+    }
+    75% {
+        stroke: #004695;
+    }
+    100% {
+        stroke: #6b48ff;
+    }
+}
+
+@keyframes colors {
+    0% {
+        stroke: #6b48ff;
+    }
+    25% {
+        stroke: #004695;
+    }
+    50% {
+        stroke: #b4a3ff;
+    }
+    75% {
+        stroke: #004695;
+    }
+    100% {
+        stroke: #6b48ff;
+    }
+}
+
+@-webkit-keyframes dash {
+    0% {
+        stroke-dashoffset: 187;
+    }
+    50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+        transform: rotate(450deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 187;
+    }
+    50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+        transform: rotate(450deg);
+    }
+}
+
+#sampleImage {
+    -webkit-animation: sharp 5s;
+    animation: sharp 5s;
+}
+
+@-webkit-keyframes sharp {
+    from {
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+    }
+    to {
+        -webkit-filter: none;
+        -moz-filter: none;
+        -o-filter: none;
+        -ms-filter: none;
+        filter: none;
+    }
+}
+
+@keyframes sharp {
+    from {
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+    }
+    to {
+        -webkit-filter: none;
+        -moz-filter: none;
+        -o-filter: none;
+        -ms-filter: none;
+        filter: none;
+    }
+}
+
+.image-picker {
+    .action-sheet-title,
+    .action-sheet-button-inner {
+        font-size: 18px;
+        font-family: 'font_medium';
+        align-items: center;
+        color: var(--ion-color-secondary);
+    }
+    .action-sheet-button.sc-ion-action-sheet-ios .action-sheet-icon.sc-ion-action-sheet-ios {
+        font-size: 25px !important;
+        margin-right: 9px;
+        color: var(--ion-color-secondary);
+    }
+}
+
+.image-info-modal {
+    --width: 90%;
+    --min-width: 90%;
+    .alert-message {
+        text-align: center;
+        padding-bottom: 0;
+        padding-top: 16px !important;
+        ion-item {
+            --padding-start: 0;
+            --inner-padding-end: 0;
+            border-bottom: 1px solid var(--ion-color-step-150, #d9d9d9);
+            ion-label,
+            ion-select {
+                font-size: 15px;
+            }
+            ion-label {
+                color: var(--ion-text-color, var(--ion-color-primary));
+                opacity: 58%;
+            }
+        }
+    }
+    .alert-input-group {
+        padding-top: 0;
+        input {
+            font-size: 15px;
+        }
+    }
+}
+
+.ngx-progress-bar {
+    color: var(--ion-color-gradient) !important;
+}
+
+.ngx-progress-bar-ltr {
+    color: var(--ion-color-gradient) !important;
+}
+
+.ngx-foreground-spinner .center-center {
+    color: var(--ion-color-gradient) !important;
+}
+
+.center-center {
+    color: var(--ion-color-gradient) !important;
+}
+
+
+/* -----------------------------------------------------
+	Padding and margin up to 100
+-------------------------------------------------------- */
+
+$sides: (top, right, bottom, left);
+@for $space from 1 through 100 {
+    @each $side in $sides {
+        .margin-#{$side}-#{$space} {
+            margin-#{$side}: #{$space}px !important;
+        }
+        .padding-#{$side}-#{$space} {
+            padding-#{$side}: #{$space}px !important;
+        }
+        .margin-#{$space} {
+            margin: #{$space}px !important;
+        }
+        .padding-#{$space} {
+            padding: #{$space}px !important;
+        }
+    }
+}
+
+ion-calendar-modal {
+    ion-header {
+        ion-toolbar {
+            ion-title {
+                text-align: center;
+                color: var(--ion-color-white) !important;
+            }
+        }
+    }
+}
+
+.ngx-progressive-img-container {
+    border-radius: 50% !important;
+}
+
+.success-modal {
+    --height: 400px;
+    --max-height: 395px;
+    padding: 0px 20px;
+    --border-radius: 24px;
+    --background: #04040f;
+}
+
+ion-fab {
+    ion-fab-button {
+        --background: var(--ion-color-secondary);
+        --background-activated: var(--ion-color-secondary);
+        ion-icon {
+            font-size: 30px;
+        }
+    }
+}
+
+.custom-alert {
+    ion-backdrop {
+        --backdrop-opacity: 0.6;
+    }
+    .alert-wrapper {
+        width: 90%;
+        min-width: 90%;
+        .alert-title {
+            text-align: center;
+            color: var(--ion-color-secondary);
+            font-family: 'font_bold';
+            padding-top: 14px;
+            padding-bottom: 19px;
+        }
+        .alert-button-group {
+            display: flex;
+            justify-content: space-between;
+            button {
+                background: var(--ion-color-primary);
+                width: 49%;
+                text-align: center;
+                margin: 0 !important;
+                span {
+                    color: var(--ion-color-white);
+                    font-size: 14px !important;
+                    font-family: 'font_regular' !important;
+                    text-transform: capitalize !important;
+                    justify-content: center;
+                }
+                &:last-child {
+                    background: var(--ion-color-secondary);
+                }
+            }
+        }
+    }
+}
+
+ion-calendar-modal {
+    .ion-color-primary {
+        --ion-color-base: var(--ion-color-secondary) !important;
+    }
+    ion-toolbar {
+        --background: var(--ion-color-secondary)!important;
+    }
+    ion-button,
+    ion-title {
+        font-family: 'font_medium';
+    }
+    .on-selected {
+        background: var(--ion-color-secondary) !important;
+    } 
+}
+
+.leaveToast {
+    --background: var(--ion-color-primary);
+    color: var(--ion-color-white);
+    --end: 0;
+    --start: 0;
+    --border-radius: 0;
+    --white-space: 0;
+    --bottom: 3;
+    --white-space: 0;
+    height: 101.5%;
+    font-family: 'rubik_m';
+    font-size: 15px;
+}
+
+@font-face {
+    font-family: 'mon-medium';
+    src: url(assets/fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'mon-regular';
+    src: url(assets/fonts/Montserrat-Regular.ttf);
+}
+
+.delete {
+    --min-height: 180px;
+    --max-height: 200px;
+    padding: 10px 10px 10px 10px;
+}
+
+@font-face {
+    font-family: 'mon-bold';
+    src: url(assets/fonts/Montserrat-Bold.ttf);
+}

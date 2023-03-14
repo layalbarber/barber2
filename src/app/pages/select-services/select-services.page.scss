@@ -1,0 +1,247 @@
+ion-header {
+    ion-toolbar {
+        border-bottom: 1px solid var(--ion-border-color);
+        ion-back-button {
+            --color: var(--ion-color-primary);
+        }
+        ion-title {
+            font-size: 16px;
+            font-family: "font_medium";
+            --color: var(--ion-color-primary);
+        }
+        ion-button {
+            --padding-start: 5px;
+            --padding-end: 5px;
+            --color: var(--ion-color-primary);
+        }
+    }
+}
+
+ion-content {
+    ion-item {
+        --inner-padding-end: 0px;
+        --padding-start: 16px;
+        --padding-end: 16px;
+        ion-label {
+            font-size: 16px;
+            font-family: mon-medium;
+        }
+        ion-select {
+            font-size: 19px;
+            font-family: mon-medium;
+            text-transform: capitalize;
+        }
+    }
+    .btn_div {
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 60px;
+        display: flex;
+        overflow-y: auto;
+        margin-bottom: 10px;
+        ion-button {
+            width: auto;
+            height: 34px !important;
+            --border-radius: 5px;
+            font-size: 13px;
+            --background-activated: var(--ion-color-secondary);
+            margin-right: 10px;
+            font-family: mon-regular;
+            align-self: center;
+            --box-shadow: none;
+        }
+        .active {
+            --background: var(--ion-color-secondary);
+            border-radius: 5px;
+            --background-activated: var(--ion-color-secondary);
+            --color: white;
+        }
+        .segment_btn {
+            --background: white;
+            --color: gray;
+            border: 1px solid #bbbbbb;
+            border-radius: 5px;
+        }
+    }
+    .btn_div::-webkit-scrollbar {
+        display: none;
+    }
+    ion-checkbox {
+        --background: #dddddd;
+        --background-checked: var(--ion-color-secondary);
+        --border-color-checked: white;
+        --border-color: white;
+        --border-radius: 7px;
+        --size: 19px;
+        --checkmark-color: white;
+        --checkmark-width: 2px;
+        margin-top: 10px;
+    }
+    ion-item {
+        font-size: 14px;
+        font-family: mon-medium;
+        color: black;
+        --inner-padding-end: 0px;
+        ion-text {
+            font-size: 14px;
+            color: black;
+            font-family: mon-medium;
+            margin-left: 13px;
+            margin-right: 10px;
+        }
+    }
+    hr {
+        border: 0.5px dashed #eeeeee;
+        width: 77%;
+        margin-left: 59px;
+        margin-top: 0px;
+    }
+    .last_btn {
+        background-color: blue;
+        width: 100%;
+        height: 55px;
+        position: absolute;
+    }
+    .btn {
+        position: absolute;
+        width: 100%;
+        bottom: 0%;
+        padding: 0px !important;
+        margin: 0px;
+        h1 {
+            font-size: 15px;
+            position: absolute;
+            left: 6px;
+            color: white;
+            font-family: mon-medium;
+            margin: 0px;
+        }
+        background-color: blue;
+        height: 55px;
+        .service {
+            height: 32px;
+            background-color: white;
+            border-radius: 4px;
+            font-size: 15px;
+            color: blue;
+            font-family: mon-medium;
+            position: absolute;
+            right: -1%;
+            top: 8px;
+        }
+        .close {
+            height: 14px;
+            width: 14px;
+            color: blue;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            right: 3%;
+            top: 18px;
+            ion-icon {
+                padding: 0px;
+                margin-left: -17px;
+                font-size: 19px;
+                color: blue;
+            }
+        }
+    }
+    h5 {
+        margin-left: 12px;
+        margin-right: 12px;
+        font-family: "mon-medium";
+        color: black;
+        ion-icon {
+            margin: 0px 14px -3px;
+        }
+    }
+    .time-slot {
+        font-size: 14px;
+        font-family: "mon-medium";
+        color: black;
+        padding: 11px 5px 6px;
+        text-align: center;
+    }
+    .active {
+        color: white;
+        background: var(--ion-color-secondary);
+        border-radius: 5px;
+    }
+    .check {
+        ion-checkbox {
+            --background: #dddddd;
+            --background-checked: pink;
+            --border-color-checked: white;
+            --border-color: white;
+            --border-radius: 7px;
+            --size: 19px;
+            --checkmark-color: white;
+            --checkmark-width: 2px;
+            margin-top: 10px;
+        }
+        ion-item {
+            font-size: 14px;
+            font-family: mon-medium;
+            color: black;
+            padding-left: 14px;
+            --inner-padding-end: 0px;
+            ion-text {
+                font-size: 14px;
+                color: black;
+                font-family: mon-medium;
+                margin-left: 13px;
+            }
+        }
+        hr {
+            border: 0.5px dashed #eeeeee;
+            width: 77%;
+            margin-left: 59px;
+            margin-top: 0px;
+        }
+        .last_btn {
+            background-color: blue;
+            width: 100%;
+            height: 55px;
+            position: absolute;
+        }
+    }
+}
+
+ion-footer {
+    .btnLa {
+        height: 48px;
+        font-family: mon-medium;
+        text-transform: capitalize;
+        font-size: 17px;
+        overflow: hidden;
+        margin: 0;
+        width: 100%;
+        left: 0;
+        bottom: 0%;
+        --background: var(--ion-color-gradient);
+    }
+}
+
+.err-msg {
+    margin: 0;
+    font-size: 16px;
+    font-family: "font_bold";
+    margin-top: 0px;
+    color: #f00;
+    text-align: center;
+    letter-spacing: 2.5px;
+    margin-top: 20px;
+    &.single {
+        margin-bottom: 20px;
+    }
+}
+
+.err-small-msg {
+    font-size: 11px;
+    font-family: "font_book";
+    margin-top: 0px;
+    color: #f00;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}

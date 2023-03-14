@@ -1,0 +1,88 @@
+ion-header {
+    ion-toolbar {
+        ion-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0 50px 1px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .btn-edit {
+            .icon-edit {
+                font-size: 18px;
+            }
+            .icon-list {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+ion-content {
+    --padding-bottom: 20px;
+    .title {
+        font-size: 20px;
+        margin-left: 16px;
+        margin-top: 29px;
+        font-family: "mon-bold";
+    }
+    ion-card {
+        box-shadow: 0px 0px 10px #00000036;
+    }
+    ion-item {
+        &.spacing {
+            margin: 0 16px;
+        }
+        margin-bottom: 10px;
+        --padding-start: 0px;
+        --highlight-color-focused: #6492b9;
+        --inner-padding-end: 0;
+        ion-label {
+            font-family: "mon-regular";
+            font-size: 14px;
+            line-height: 17px;
+            --color: var(--ion-color-primary);
+        }
+        ion-input,
+        ion-textarea {
+            font-family: "mon-regular";
+            --color: var(--ion-color-primary);
+            --padding-top: 12px;
+            --padding-bottom: 12px;
+        }
+        ion-textarea {
+            font-size: 13px;
+        }
+    }
+    ion-button {
+        display: block;
+        --box-shadow: none;
+        margin: 0 13px;
+        height: 45px;
+        --background: var(--ion-color-gradient);
+    }
+    table {
+        margin: auto;
+        border-collapse: collapse;
+        th {
+            background: var(--ion-color-secondary);
+            font-size: 12px;
+            font-family: "mon-regular" !important;
+            color: var(--ion-color-white);
+        }
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            font-size: 12px;
+            font-family: "mon-medium";
+        }
+    }
+    .no-data-big {
+        .title {
+            margin-top: 10px;
+        }
+    }
+}

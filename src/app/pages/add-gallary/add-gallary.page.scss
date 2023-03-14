@@ -1,0 +1,95 @@
+ion-header {
+    ion-toolbar {
+        .btn-close {
+            min-height: 48px;
+            min-width: 48px;
+            max-height: 48px;
+            max-width: 48px;
+        }
+    }
+}
+
+ion-content {
+    .title {
+        font-family: "font_bold";
+        font-family: 23px;
+        color: var(--ion-color-primary);
+    }
+    .package-image {
+        margin: 20px auto;
+        padding: 5px;
+        border-radius: 5px 4px;
+        height: 206px;
+        width: 249px;
+        border: 1px solid var(--ion-border-color);
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top: 28%;
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+        }
+    }
+    ion-item {
+        margin-bottom: 10px;
+        --padding-start: 0px;
+        --highlight-color-focused: #6492b9;
+        ion-input,
+        ion-select,
+        ion-textarea {
+            font-family: "font_regular";
+            --color: var(--ion-color-primary);
+            --padding-top: 12px;
+            --padding-bottom: 12px;
+        }
+    }
+    .percentage-section {
+        margin: 10px 0px 14px;
+        .input-section {
+            margin-top: 10px;
+            display: flex;
+            ion-label {
+                font-family: "font_regular";
+                color: var(--ion-color-primary);
+            }
+            ion-input {
+                font-family: "font_regular";
+                --color: var(--ion-color-primary);
+                --padding-top: 12px;
+                --padding-bottom: 12px;
+                border-bottom: 1px solid var(--ion-border-color);
+                text-align: center;
+            }
+            ion-button {
+                height: 40px;
+                margin: 0px;
+                --padding-start: 0.7em;
+                --padding-end: 0.7em;
+                --background: var(--ion-border-color);
+                --color: var(--ion-color-primary);
+                --box-shadow: none;
+            }
+            .btn-minus {
+                --border-radius: 4px 0px 0px 4px;
+            }
+            .btn-pluse {
+                --border-radius: 0px 4px 4px 0px;
+            }
+        }
+    }
+}
+
+ion-footer {
+    background: white;
+    .btn-save {
+        height: 45px;
+        font-family: "font_medium";
+        margin: 16px;
+        --box-shadow: none;
+        --background: var(--ion-color-gradient);
+    }
+}

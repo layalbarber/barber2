@@ -1,0 +1,75 @@
+ion-header {
+    ion-toolbar {
+        border-bottom: 1px solid var(--ion-border-color);
+        ion-back-button {
+            --color: var(--ion-color-primary);
+        }
+        ion-title {
+            font-size: 16px;
+            font-family: "font_medium";
+            --color: var(--ion-color-primary);
+        }
+    }
+}
+
+ion-toggle {
+    margin-top: -9px;
+    --background: #ff726f;
+    --background-checked: var(--ion-color-secondary) !important
+}
+
+.reviews {
+    .display-review {
+        padding: 0px 16px 0px 16px;
+        .all-review-title {
+            font-size: 14px;
+            margin-bottom: 0px;
+            font-family: "mon-bold";
+            color: var(--ion-color-simpleDark);
+        }
+        .single-review {
+            border-bottom: 1px solid var(--ion-border-color);
+            padding-right: 16px;
+            margin-top: 6px;
+            ion-item {
+                --padding-start: 0px;
+                --inner-padding-end: 0px;
+                ion-avatar {
+                    height: 54px;
+                    width: 54px;
+                }
+                .username {
+                    font-size: 16px;
+                    font-family: mon-bold;
+                    text-transform: capitalize;
+                    .time {
+                        font-size: 11px;
+                        font-family: "font_regular";
+                        color: var(--ion-color-simpleDark);
+                        margin-top: 5px;
+                    }
+                }
+                .stars {
+                    ion-icon {
+                        color: var(--ion-border-color);
+                        margin-right: 2px;
+                        font-size: 15px;
+                    }
+                    .color-star {
+                        color: var(--ion-color-darkYellow);
+                    }
+                    .gray{
+                        color: var( --ion-color-gray);
+                    }
+                }
+            }
+            .review-content {
+                font-size: 14px;
+                font-family: mon-medium;
+                margin-top: 0px;
+                line-height: 20px;
+                text-transform: capitalize;
+            }
+        }
+    }
+}

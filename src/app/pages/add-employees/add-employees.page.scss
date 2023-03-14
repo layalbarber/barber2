@@ -1,0 +1,115 @@
+ion-header {
+    ion-toolbar {
+        .btn-close {
+            min-height: 48px;
+            min-width: 48px;
+            max-height: 48px;
+            max-width: 48px;
+        }
+    }
+}
+
+.package-image {
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 5px 4px;
+    height: 141px;
+    width: 132px;
+    border: 1px solid var(--ion-border-color);
+
+    img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+    }
+}
+
+p {
+    color: red;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: "mon-medium";
+}
+
+.check {
+    img {
+        border-radius: 4px;
+    }
+
+    ion-text {
+        font-size: 15px;
+        font-family: "mon-medium";
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+ion-checkbox {
+    --background: #dddddd;
+    --background-checked: var(--ion-color-secondary);
+    --border-color-checked: white;
+    --border-color: white;
+    --border-radius: 7px;
+    --size: 19px;
+    --checkmark-color: white;
+    --checkmark-width: 2px;
+    margin-top: 10px;
+}
+
+ion-item {
+    ion-label {
+        font-size: 16px;
+        font-family: "mon-medium";
+        color: var(--ion-color-lightDark);
+        margin-bottom: 7px;
+    }
+
+    ion-input {
+        background-color: var(--ion-input-back);
+        --padding-start: 10px;
+        font-family: "mon-medium";
+        font-size: 16px;
+        color: var(--ion-color-simpleDark);
+    }
+}
+
+h3 {
+    font-size: 15px;
+    font-family: "mon-medium";
+    font-weight: bold;
+    margin-left: 17px;
+    margin-bottom: 0px;
+}
+
+h5 {
+    font-size: 17px;
+    font-family: "mon-bold";
+    margin-left: 16px;
+    margin-top: 23px;
+    margin-bottom: 26px;
+    border-bottom: 0.5px solid var(--ion-color-simpleDark);
+    padding-bottom: 8px;
+    margin-right: 16px;
+}
+
+ion-datetime {
+    font-size: 15px;
+    font-family: "mon-medium";
+}
+
+.save {
+    width: 100%;
+    background-color: var(--ion-color-secondary);
+    font-family: "mon-medium";
+    font-size: 17px;
+    height: 46px;
+    margin: 0px;
+}
+
+ion-select {
+    font-family: "mon-medium";
+    font-size: 17px;
+    margin-top: -7px;
+}

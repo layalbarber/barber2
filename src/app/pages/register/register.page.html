@@ -1,0 +1,56 @@
+<ion-content>
+    <div class="content-section">
+        <h1 class="ion-text-center title">{{'register.label' | translate}}</h1>
+        <p class="ion-text-center p">{{'register.signUp' | translate}}</p>
+        <ion-input class="email-input" [(ngModel)]="name" name="name"
+            placeholder="{{'signupErr.namePlace' | translate}}" type="text"></ion-input>
+        <p class="err">{{nameErr}}</p>
+        <ion-input class="email-input" [(ngModel)]="email" name="email"
+            placeholder="{{'signupErr.emailplace' | translate}}" type="email"></ion-input>
+        <p class="err">{{emailErr}}</p>
+        <ion-input class="email-input" [(ngModel)]="password" name="password"
+            placeholder="{{'signupErr.passwordPlace' | translate}}" type="password"></ion-input>
+        <p class="err">{{passErr}}</p>
+
+        <ion-input class="email-input" [(ngModel)]="confirm_password" name="confirm"
+            placeholder="{{'signupErr.confiPlace' | translate}}" type="password"></ion-input>
+        <p class="err">{{ConfPassErr}}</p>
+
+        <div class="number-input ion-margin-top ion-margin-bottom">
+            <div class="code-div">
+                <ng-select class="country-codeSelect" [clearable]="false" [(ngModel)]="code" [items]="cCode"
+                    bindLabel="dial_code" bindValue="dial_code">
+                    <ng-template ng-label-tmp let-item="item">
+                        <img height="16" width="21"
+                            src="{{'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/' + (item.code | lowercase) + '.png'}}"
+                            style="margin-right: 8px;margin-bottom: -2px" />
+                        <span>{{item.dial_code}}</span>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <img height="16" width="21"
+                            src="{{'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/' + (item.code | lowercase) + '.png'}}"
+                            style="margin-right: 8px;margin-bottom: -2px" />
+                        <span>{{item.dial_code}}</span>
+                    </ng-template>
+                </ng-select>
+            </div>
+            <div class="number-div">
+                <div class="input-div">
+                    <ion-input [(ngModel)]="phone" type="tel" placeholder="{{'signupErr.phonePlaceol' | translate}}">
+                    </ion-input>
+                </div>
+            </div>
+        </div>
+        <p class="err ion-margin-top ion-padding-top">{{phoneErr}}</p>
+
+        <ion-button class="btn-login ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid"
+            (click)="signIn()">
+            {{'register.button' | translate}}
+        </ion-button>
+
+        <p class="ion-text-center account-text">
+            {{'register.dont' | translate}}
+            <a routerDirection="forward" class="a" routerLink="/signin"> {{'login.button' | translate}}</a>
+        </p>
+    </div>
+</ion-content>

@@ -1,0 +1,181 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+.segment {
+    height: 50px;
+    background: #F0F0F0;
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    ion-button {
+        --box-shadow: none;
+        height: auto;
+        width: auto;
+        --padding-start: 0;
+        --padding-end: 0;
+        margin: 0;
+        font-size: 11px;
+        height: 24px;
+        --background: #0000;
+        text-transform: capitalize;
+        font-size: 15px;
+        font-family: 'font_regular';
+        color: var(--ion-color-secondary) !important;
+        opacity: 0.5;
+        margin-left: 22px;
+        margin-right: 22px;
+        &.active {
+            opacity: 1;
+        }
+    }
+}
+
+.no-data-small {
+    margin-top: 11%;
+}
+
+ion-card {
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.17);
+    margin-bottom: 19px;
+}
+
+ion-content {
+
+    .client_content{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .clientDetail{
+        flex: 1;
+        padding-left: 19px;
+    }
+
+    ion-avatar {
+        margin: auto;
+        height: 90px;
+        width: 90px;
+        margin-top: 8px;
+        margin-left: 18px;
+        margin-right: 18px;
+    }
+    .user-info {
+        ion-item {
+            ion-label {
+                h3 {
+                    font-family: "font_regular";
+                }
+                p {
+                    font-family: "font_book";
+                }
+            }
+        }
+    }
+    .user-name {
+        margin: 8px 0 0 0;
+        text-transform: capitalize;
+        font-family: 'font_medium';
+        margin-right: 35px;
+    }
+    .bg-state {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 22px;
+        text-align: center;
+    }
+    .sm-state {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .sale{
+        margin-right: 13vw;
+        margin-top: 9px;
+    }
+
+    .outsatnding{
+        margin-right: 20px;
+        margin-top: 9px;
+    }
+
+    .statistics {
+       
+        margin: 0;
+        margin: 15px 15px 0px 15px;
+        .content {
+            h2 {
+                font-family: 'font_book';
+                font-size: 16px;
+                &.bg {
+                    font-size: 22px;
+                    font-family: 'font_medium';
+                }
+            }
+            p {
+                font-family: 'font_book';
+                font-size: 13px
+            }
+        }
+    }
+    .appointments {
+        ion-list {
+            width: 100%;
+            ion-item {
+                ion-label {
+                    display: flex;
+                    .date-indicate {
+                        margin-right: 15px;
+                        text-align: center;
+                        .date {
+                            margin: 0;
+                            font-size: 16px;
+                            font-family: 'font_bold';
+                        }
+                        .month {
+                            font-size: 12px;
+                            font-family: 'font_regular';
+                        }
+                    }
+                    .list-content {
+                        width: 100%;
+                        .time,
+                        .hours {
+                            font-size: 12px;
+                            font-family: 'font_regular';
+                            .label {
+                                font-size: 10px;
+                                color: var(--ion-color-green);
+                                border-radius: 10px;
+                                font-family: 'font_bold';
+                                margin-left: 7px;
+                                margin-right: 7px;
+                            }
+                        }
+                        .services {
+                            font-size: 12px;
+                            font-family: 'font_regular';
+                        }
+                    }
+                    .price {
+                        width: 26%;
+                        text-align: right;
+                        align-self: center;
+                        margin: 0;
+                        font-size: 16px;
+                        font-family: "font_bold";
+                    }
+                }
+                ion-icon {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

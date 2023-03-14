@@ -1,0 +1,101 @@
+ion-header {
+    ion-toolbar {
+        border-bottom: 1px solid var(--ion-border-color);
+        ion-back-button {
+            --color: var(--ion-color-primary);
+        }
+        ion-title {
+            font-size: 16px;
+            font-family: "font_medium";
+            --color: var(--ion-color-primary);
+        }
+        ion-button {
+            --padding-start: 5px;
+            --padding-end: 5px;
+            --color: var(--ion-color-primary);
+            ion-icon {
+                font-size: 28px;
+            }
+        }
+    }
+}
+
+ion-content {
+    .search_icon{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    ion-card {
+        box-shadow: 0 0px 9px rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+        ion-item {
+            --padding-top: 6px;
+            border-bottom: 1px solid #DCEEFE;
+            ion-avatar {
+                height: 49px;
+                width: 49px;
+                box-shadow: 0 0 5px rgba(0, 135, 255, 0.3);
+                --border-radius: 0;
+                img {
+                    height: 49px;
+                    width: 49px;
+                    border-radius: 5px;
+                }
+            }
+            ion-label {
+                span {
+                    margin-top: -32px;
+                }
+                ion-icon {
+                    font-size: 21px;
+                    color: red;
+                }
+                .doctor-name {
+                    font-size: 16px;
+                    font-family: 'font_bold';
+                }
+                .specialist {
+                    font-size: 17px;
+                    font-family: mon-medium;
+                    color: var(--ion-color-gray);
+                    margin: 0px;
+                }
+                .location {
+                    font-size: 12px;
+                    font-family: 'font_regular';
+                    color: var(--ion-color-gray);
+                    line-height: 1.2;
+                    white-space: normal;
+                }
+                .more-btn {
+                    height: auto;
+                    width: auto;
+                    --padding-start: 0;
+                    --padding-end: 0;
+                    margin: 0;
+                    position: absolute;
+                    right: 9px;
+                    top: 18px;
+                }
+            }
+        }
+        .other-info {
+            display: flex;
+            justify-content: space-around;
+            padding: 9px 0px;
+            h2 {
+                margin: 0;
+                margin-bottom: 3px;
+                font-size: 11px;
+                font-family: 'font_bold';
+                color: var(--ion-color-gray);
+            }
+            h3 {
+                margin: 0;
+                font-size: 12px;
+                font-family: 'font_regular';
+                color: var(--ion-color-gray);
+            }
+        }
+    }
+}

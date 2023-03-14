@@ -1,0 +1,111 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar> 
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="tabs/more"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center absolute-center">{{'dashboard.tite' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+
+    <div class="offerContainer">
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="logo-usd"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount">{{currancy}}{{dashboardData?.income}}</h2>
+                <p class="text">{{'dashboard.income' | translate}}</p>
+            </div>
+        </div>
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="logo-buffer"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount margin-left-15 margin-bottom-2">{{dashboardData?.service}}</h2>
+                <p class="text margin-left-15 padding-bottom-12">{{'dashboard.totalser' | translate}}</p>
+            </div>
+        </div>
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="people-sharp"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount margin-left-15 margin-bottom-2">{{dashboardData?.users}}</h2>
+                <p class="text margin-left-15 padding-bottom-12">{{'dashboard.totalUser' | translate}}</p>
+            </div>
+        </div>
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="people-sharp"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount margin-left-15 margin-bottom-2">{{dashboardData?.employee}}</h2>
+                <p class="text margin-left-15 padding-bottom-12">{{'dashboard.totalEmp' | translate}}</p>
+            </div>
+        </div>
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="browsers-outline"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount margin-left-15 margin-bottom-2">{{dashboardData?.appointment}}</h2>
+                <p class="text margin-left-15 padding-bottom-12">{{'dashboard.totalAppointmen' | translate}}</p>
+            </div>
+        </div>
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="hourglass-outline"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount margin-left-15 margin-bottom-2">{{dashboardData?.pending_appointment}}</h2>
+                <p class="text margin-left-15 padding-bottom-12">{{'dashboard.pendingAppointmen' | translate}}</p>
+            </div>
+        </div>
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="briefcase-outline"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount margin-left-15 margin-bottom-2">{{dashboardData?.approved_appointment}}</h2>
+                <p class="text margin-left-15 padding-bottom-12">{{'dashboard.approvedAppoinement'| translate}}</p>
+            </div>
+        </div>
+        <div class="outerShadow margin-bottom-30">
+            <div class="offerCard">
+                <div>
+                    <p class="title margin-left-14"></p>
+                    <div class="circle">
+                        <ion-icon class="dark-icon" name="close-circle-outline"></ion-icon>
+                    </div>
+                </div>
+                <h2 class="discount margin-left-15 margin-bottom-2">{{dashboardData?.cancel_appointment}}</h2>
+                <p class="text margin-left-15 padding-bottom-12">{{'dashboard.cancelAppoinemt' | translate}}</p>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

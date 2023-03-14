@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title></ion-title>
+        <ion-buttons slot="end" class="ion-no-margin">
+            <ion-button mode="md" class="btn-close">
+                <ion-back-button defaultHref="gallery" icon="close-outline" text=""></ion-back-button>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+
+    <h3 class="title" *ngIf="language == 'ar'">أضف {{'gallary.label' | translate}}</h3>
+    <h3 class="title" *ngIf="language == 'en'">{{action}} {{'gallary.label' | translate}}</h3>
+
+    <div class="package-image" (click)="albumSheet()">
+        <img [src]="galleryPreviewImage" alt="">
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-button *ngIf="action == 'Update'" (click)="delete()" expand="block" class="btn-save">
+        {{'gallary.del' | translate}}
+    </ion-button>
+
+    <ion-button *ngIf="action != 'Update'" [disabled]="!galleryForm.valid" (click)="onSave()" expand="block" class="btn-save">
+        {{'gallary.upd' | translate}}
+    </ion-button>
+</ion-footer>

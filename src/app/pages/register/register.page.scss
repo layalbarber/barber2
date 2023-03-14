@@ -1,0 +1,128 @@
+ion-content {
+    --background: none;
+    background-image: url('../../../assets/img/Rectangle.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% 46vh;
+    .err {
+            margin-top: -11px;
+            margin-left: 7px;
+            color: red;
+             font-family: 'mon-regular';
+    }
+    .content-section {
+        width: 100%;
+        padding: 4vh 24px 20px 20px;
+        margin-top: 29vh;
+        background-color: var(--ion-color-white);
+        border-radius: 17px 17px 0px 0px;
+        .account-text {
+            margin-top: 3vh;
+            font-family: 'mon-regular';
+            .a {
+                color: var(--ion-color-gradient);
+            }
+        }
+        
+        .title {
+            font-family: 'mon-bold';
+            font-size: 30px;
+            margin-top: 0px;
+        }
+        .p{
+            color: var(--ion-color-gray);
+            margin: 0px;
+            font-size: 14px;
+            font-family: 'mon-regular';
+        }
+        ion-input {
+            --background: var(--ion-input-back);
+            height: 44px;
+            border-radius: 5px;
+            --padding-start: 24px;
+            --placeholder-color: var(--ion-placeholder-color);
+            --placeholder-font-style: 'mon-regular';
+            font-family: mon-regular;
+            font-size: 15px;
+        }
+        .number-input {
+           
+            border-radius: 22px;
+            height: 44px;
+            padding: 4px 4px;
+            display: flex;
+            position: relative;
+            margin-left: -10px;
+            .code-div {
+                border-right: 1px solid var(--silver-color);
+                margin-top: -6px;
+                border-radius: 11px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .number-div {
+                padding-left: 8px;
+                .input-div {
+                    padding-left: 3px;
+                    width: 100%;
+                    ion-input {
+                        font-size: 15px;
+                        font-family: "pop-medium";
+                        --padding-top: 9px;
+                        position: relative;
+                    }
+                }
+                .input-div {
+                    padding-left: 3px;
+                    width: 100%;
+                }
+            }
+            .button-div {
+                width: 25px;
+                .btn-clear {
+                    --padding-start: 0px;
+                    --padding-end: 0px;
+                    margin-top: 0px;
+                }
+            }
+        }
+        .email-input {
+            margin-bottom: 20px;
+            margin-top: 4vh;
+        }
+        .btn-login {
+            height: 44px;
+            margin: 4vh 2px 0px 2px;
+            font-size: 16px;
+            font-family: 'mon-regular';
+            --color: var(--ion-color-white);
+            --box-shadow: none;
+            --border-radius: 5px;
+            --background: var(--ion-color-gradient);
+        }
+        .btn-forgot {
+            --color: var(--ion-color-lightDark);
+            --color-activated: var(--ion-color-lightDark);
+            --ripple-color: var(--ion-color-white);
+            text-transform: inherit;
+            font-family: 'mon-regular';
+            margin-top: 18px;
+        }
+        .account-text {
+            margin-top: 3vh;
+            font-family: 'mon-regular';
+            a {
+                color: var(--ion-color-darkYellow);
+            }
+        }
+    }
+}
+
+.err-msg {
+    text-align: center;
+    margin-bottom: 10px !important;
+    color: #f00 !important;
+    letter-spacing: 1.4px !important;
+    font-size: 12px !important;
+    font-family: "font_medium" !important;
+}

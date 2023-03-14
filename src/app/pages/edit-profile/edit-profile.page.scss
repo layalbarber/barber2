@@ -1,0 +1,102 @@
+ion-header {
+    ion-toolbar {
+        border-bottom: 1px solid var(--ion-border-color);
+        ion-back-button {
+            --color: var(--ion-color-primary);
+        }
+        ion-title {
+            font-size: 16px;
+            font-family: "font_medium";
+            --color: var(--ion-color-primary);
+        } 
+        ion-button {
+            --padding-start: 5px;
+            --padding-end: 5px;
+            --color: transparent;
+            --ripple-color: transparent;
+        }
+    }
+}
+
+ion-content {
+    .cuntry_label{
+        font-size: 13px;
+    }
+    ng-select {
+        background-color: transparent;
+        text-align: center;
+        padding-top: 9px !important;
+        padding: 3px;
+        box-shadow: none;
+        width: 96px;
+        padding-left: 3px;
+        height: 44px;
+        margin-top: 6px;
+        border-bottom: none;
+    }
+
+    .country_code{
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .code-div {
+        border-bottom: 1px solid var(--ion-border-color);
+    }
+    .profile-image {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        margin: 16px auto;
+        border: 1px solid var(--ion-border-color);
+        position: relative;
+        .pluse-icon {
+            background: var(--ion-color-gradient);
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 1px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            ion-icon {
+                font-size: 23px;
+                color: var(--ion-color-white);
+            }
+        }
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+    .info-title {
+        font-family: "font_medium";
+        color: var(--ion-color-primary);
+        margin-top: 40px;
+    }
+    ion-item {
+        margin-bottom: 10px;
+        --padding-start: 0px;
+        --highlight-color-focused: #6492b9;
+        --ripple-color: transparent;
+        ion-input,
+        ion-select,
+        ion-textarea,
+        ion-datetime {
+            font-family: "font_regular";
+            --color: var(--ion-color-primary);
+            --padding-top: 12px;
+            --padding-bottom: 12px;
+        }
+    }
+    .btn-save {
+        height: 45px;
+        font-family: "font_medium";
+        margin: 25px 0px;
+        height: 45px;
+        --box-shadow: none;
+        --background: var(--ion-color-gradient);
+    }
+}

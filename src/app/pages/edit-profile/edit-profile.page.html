@@ -1,0 +1,118 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="tabs/more"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">{{'edit-profile.title' | translate}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill="clear" mode="md">
+                <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+    <form [formGroup]="myForm">
+
+        <div class="profile-image">
+            <img [src]="imagePreview" alt="">
+            <div (click)="albumSheet()" class="pluse-icon">
+                <ion-icon name="add-outline"></ion-icon>
+            </div>
+        </div>
+
+        <h3 class="info-title">{{'edit-profile.personal' | translate}}</h3>
+        <ion-item>
+            <ion-label position="floating">{{'edit-profile.firstNam' | translate}}</ion-label>
+            <ion-input formControlName="name" name="first_name" type="text"></ion-input>
+        </ion-item>
+        <p class="err-msg" *ngIf="myForm.controls.name.hasError('required') && myForm.controls.name.touched"
+            color="danger">
+            {{'edit-profile.name' | translate}}
+        </p>
+
+
+
+        <ion-item>
+            <ion-label position="floating">{{'edit-profile.email' | translate}}</ion-label>
+            <ion-input formControlName="email" name="email" type="email"></ion-input>
+        </ion-item>
+        <p class="err-msg" *ngIf="myForm.controls.email.hasError('required') && myForm.controls.email.touched"
+            color="danger">
+            {{'edit-profile.emailRe' | translate}}
+        </p>
+        <p class="err-msg" *ngIf="myForm.controls.email.hasError('email') && myForm.controls.email.touched"
+            color="danger">
+            {{'edit-profile.invalid' | translate}}
+        </p>
+
+        <div class="country_code">
+            <ion-label class="cuntry_label" position="floating">{{'addClient.code' | translate}}</ion-label>
+            <div class="code-div">
+                <ng-select class="country-codeSelect ccode" [clearable]="false" [(ngModel)]="code"
+                    formControlName="code" [items]="cCode" bindLabel="dial_code" bindValue="dial_code">
+                    <ng-template ng-label-tmp let-item="item">
+                        <img height="16" width="21"
+                            src="{{'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/' + (item.code | lowercase) + '.png'}}"
+                            style="margin-right: 8px;margin-bottom: -2px" />
+                        <span>{{item.dial_code}}</span>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <img height="16" width="21"
+                            src="{{'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/' + (item.code | lowercase) + '.png'}}"
+                            style="margin-right: 8px;margin-bottom: -2px" />
+                        <span>{{item.dial_code}}</span>
+                    </ng-template>
+                </ng-select>
+            </div>
+        </div>
+
+        <ion-item>
+            <ion-label position="stacked">{{'edit-profile.phone' | translate}}</ion-label>
+            <ion-row class="ion-no-padding">
+                <ion-col size="12">
+                    <ion-input formControlName="phone" name="phone" type="tel"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <p class="err-msg" *ngIf="myForm.controls.phone.hasError('required') && myForm.controls.phone.touched"
+            color="danger">
+            {{'edit-profile.phoneR' | translate}}
+        </p>
+
+        <ion-button (click)="editProfile()" expand="block" class="ion-no-margin btn-save">
+            {{'edit-profile.save' | translate}}
+        </ion-button>
+
+    </form>
+
+    <form [formGroup]="changePassword">
+        <h3 class="info-title">{{'edit-profile.change' | translate}}</h3>
+        <ion-item>
+            <ion-label position="floating">{{'edit-profile.currentPas' | translate}}</ion-label>
+            <ion-input formControlName="old_password" name="old_password" type="password"></ion-input>
+        </ion-item>
+        <p class="err-msg" color="danger" *ngIf="old">
+            {{old}}
+        </p>
+        <ion-item>
+            <ion-label position="floating">{{'edit-profile.newPass' | translate}}</ion-label>
+            <ion-input formControlName="new_password" name="new_password" type="password"></ion-input>
+        </ion-item>
+        <p class="err-msg" color="danger" *ngIf="newp">
+            {{newp}}
+        </p>
+        <ion-item>
+            <ion-label position="floating">{{'edit-profile.veriFy' | translate}}</ion-label>
+            <ion-input formControlName="confirm_password" name="confirm_password" type="password"></ion-input>
+        </ion-item>
+        <p class="err-msg" color="danger" *ngIf="cnf">
+            {{cnf}}
+        </p>
+        <ion-button [disabled]="!changePassword.valid" (click)="updatePassword()" expand="block"
+            class="ion-no-margin btn-save">
+            {{'edit-profile.save' | translate}}
+        </ion-button>
+    </form>
+</ion-content>

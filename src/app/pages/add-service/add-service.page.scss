@@ -1,0 +1,125 @@
+ion-header {
+    ion-toolbar {
+        .btn-close {
+            min-height: 48px;
+            min-width: 48px;
+            max-height: 48px;
+            max-width: 48px;
+        }
+        ion-title {
+            font-size: 16px;
+            font-family: 'font_medium';
+            text-align: center;
+            color: var(--ion-color-black);
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0 90px 1px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+    }
+    &.border {
+        border-bottom: 1px solid var(--ion-border-color) !important;
+    }
+}
+
+ion-content {
+    .title {
+        color: var(--ion-color-primary);
+        font-size: 23px;
+        font-family: "font_bold";
+    }
+    .service-image {
+        margin: 20px auto;
+        padding: 5px;
+        border-radius: 5px 4px;
+        height: 100px;
+        width: 150px;
+        border: 1px solid var(--ion-border-color);
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    }
+    ion-item {
+        margin-bottom: 10px;
+        --padding-start: 0px;
+        --highlight-color-focused: #6492b9;
+        ion-input,
+        ion-select,
+        ion-textarea {
+            font-family: "font_regular";
+            --color: var(--ion-color-primary);
+            --padding-top: 12px;
+            --padding-bottom: 12px;
+        }
+    }
+    .percentage-section {
+        margin: 10px 0px 14px;
+        .input-section {
+            margin-top: 10px;
+            display: flex;
+            ion-label {
+                font-family: "font_regular";
+                color: var(--ion-color-primary);
+            }
+            ion-input {
+                font-family: "font_regular";
+                --color: var(--ion-color-primary);
+                --padding-top: 12px;
+                --padding-bottom: 12px;
+                border-bottom: 1px solid var(--ion-border-color);
+                text-align: center;
+            }
+            ion-button {
+                height: 40px;
+                margin: 0px;
+                --padding-start: 0.7em;
+                --padding-end: 0.7em;
+                --background: var(--ion-border-color);
+                --color: var(--ion-color-primary);
+                --box-shadow: none;
+            }
+            .btn-minus {
+                --border-radius: 4px 0px 0px 4px;
+            }
+            .btn-pluse {
+                --border-radius: 0px 4px 4px 0px;
+            }
+        }
+    }
+    .err-msg {
+        margin-bottom: 15px;
+    }
+}
+
+ion-footer {
+    background: var(--ion-color-white);
+    .btn-save {
+        height: 45px;
+        font-family: "font_medium";
+        margin: 16px;
+        --box-shadow: none;
+        --background: var(--ion-color-gradient);
+    }
+}
+
+.gender-section {
+    .title {
+        margin-bottom: 0px;
+    }
+    ion-label {
+        color: var(--input-text-color);
+        font-size: 14px;
+        font-family: 'mon-medium';
+    }
+    ion-radio {
+        margin-left: 5px !important;
+    }
+    
+}

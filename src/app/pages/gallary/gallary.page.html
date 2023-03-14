@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border primary-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/clients" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center absolute-center">{{'gallaary.title' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <div class="masonry-with-columns">
+        <img (click)="updateGallery(i)" *ngFor="let i of gallery" [src]="i?.imagePath+i?.image">
+    </div>
+
+    <div *ngIf="gallery && gallery.length == 0" class="no-data-big ion-text-center">
+        <ion-icon src="../../../assets/img/appicons/photo.svg"></ion-icon>
+        <h2 class="title">{{'gallaary.no' | translate}}</h2>
+        <p class="text">{{'gallaary.use' | translate}}</p>
+    </div>
+
+    <ion-fab class="slideInUp" color="secondary" routerDirection="forward" routerLink="/addGallary/Add" mode="ios" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

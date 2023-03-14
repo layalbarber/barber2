@@ -1,0 +1,199 @@
+.specialist-title {
+    font-size: 16px;
+    font-family: "mon-bold";
+    margin-top: 26px;
+    .btn-viewAll {
+        font-size: 13px;
+        font-family: "mon-regular";
+        margin-right: 16px;
+        color: var(--ion-color-orange);
+        margin-top: 4px;
+    }
+}
+
+.favorite {
+    color: red;
+}
+
+.bottom {
+    margin-left: 4px;
+    margin-right: 14px;
+    margin-top: -6px;
+}
+
+.no-da {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 34%;
+    ion-icon {
+        font-size: 64px;
+    }
+    ion-icon {
+        font-size: 60px;
+    }
+    .title {
+        font-size: 18px;
+        font-family: 'font_bold';
+        margin-top: 9px;
+        margin-bottom: 0px;
+    }
+}
+
+.red {
+    ion-icon {
+        color: red;
+    }
+}
+
+.upcoming {
+    height: auto;
+    border: 2px solid #eeeeee;
+    border-radius: 20px;
+    padding-bottom: 25px;
+    margin-top: 20px;
+    img {
+        border-radius: 9px;
+    }
+    h1 {
+        margin: 0px;
+        font-size: 16px;
+        font-family: mon-bold;
+        color: var(--black-color);
+        margin-bottom: 0px;
+        margin-top: 1px;
+        margin-left: 6px;
+    }
+    .address {
+        margin: 0;
+        font-size: 13px;
+        font-family: mon-medium;
+        margin-top: 4px;
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+    .servic_div{
+        padding-right: 4px;
+    }
+    .rating {
+        font-size: 10px;
+        color: var(--input-text-color);
+        font-family: sf-medium;
+        ion-icon {
+            font-size: 12px;
+            color: var(--yellow-color);
+        }
+        .img1 {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+    .hr {
+        border-bottom: 0.6px dashed #cccccc;
+        margin-left: 6%;
+        margin-right: 6%;
+        margin-bottom: 16px;
+    }
+    .service {
+        font-size: 12px;
+        color: var(--silver-color);
+        font-family: mon-medium;
+        margin-top: 14px;
+        margin-left: 3px;
+        margin-bottom: -2px;
+    }
+    .serviceTypes {
+        font-size: 12px;
+        margin: 10px;
+        margin-left: 6px;
+        font-family: mon-regular;
+    }
+    .see {
+        margin: 0px;
+        font-size: 12px;
+        font-family: mon-medium;
+        color: var(--blue-color);
+        margin-top: -20px;
+        margin-left: 6px;
+    }
+    ion-label {
+        font-size: 12px;
+        font-family: mon-medium;
+        ion-button {
+            height: 18px;
+            font-size: 12px;
+            margin-top: -22px;
+            font-family: mon-medium;
+            color: var(--ion-color-danger);
+            ion-text {
+                color: var(--green-color);
+            }
+        }
+        img {
+            margin-right: 9px;
+            margin-left: 10px;
+        }
+    }
+}
+
+ion-segment-button {
+    --color: var(--input-text-color);
+    --color-checked: var(--ion-color-secondary);
+    --indicator-color: var(--ion-color-secondary);
+    --background-hover: none;
+    margin-top: -4px;
+    --color-hover: none;
+}
+
+ion-item {
+    ion-icon {
+        font-size: 18px;
+    }
+}
+.upcoming{
+    padding-right: 16px;
+}
+
+.employee-row {
+    padding-bottom: 10px;
+    overflow-x: scroll;
+    display: flex;
+    margin-left: 3px;
+    margin-right: 3px;
+    .employee_col{
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .image-div {
+        height: 55px;
+        width: 55px;
+        margin: 0px auto;
+        border-radius: 50%;
+        padding: 3px 2px 2px 2px;
+        &.active {
+            border: 1.5px solid var(--ion-color-orange);
+        }
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+    .active {
+        border-color: var(--ion-color-orange);
+    }
+    .emp-name {
+        font-size: 12px;
+        font-family: "mon-regular";
+        margin-bottom: 2px;
+    }
+    .emp-deg {
+        font-size: 11px;
+        font-family: "mon-bold";
+        color: var(--ion-color-lightGray);
+        margin: 0px;
+    }
+}

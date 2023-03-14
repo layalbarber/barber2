@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center absolute-center">{{'review.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="reviews" *ngIf="reviews?.length != 0">
+    <div class="display-review">
+      <h5 class="all-review-title">{{'review.allReviw' | translate}} ({{reviews?.length}})</h5>
+      <div class="single-review" *ngFor="let rev of reviews">
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="{{rev?.user?.imagePath+rev?.user?.image}}" />
+          </ion-avatar>
+          <ion-label>
+            <h5 class="username">
+              {{ rev.user.name }}
+              <span *ngIf="language == 'en'" class="time ion-float-right">{{ stringToDate(rev.created_at) |
+                timeAgo}}</span>
+              <span *ngIf="language == 'ar'" class="time ion-float-left">{{ stringToDate(rev.created_at) |
+                timeAgo}}</span>
+            </h5>
+            <span class="stars">
+              <ion-icon [ngClass]="rev.rate >= 1 ? 'color-star':'gray'" name="star"></ion-icon>
+              <ion-icon [ngClass]="rev.rate >= 2 ? 'color-star':'gray'" name="star"></ion-icon>
+              <ion-icon [ngClass]="rev.rate >= 3 ? 'color-star':'gray'" name="star"></ion-icon>
+              <ion-icon [ngClass]="rev.rate >= 4 ? 'color-star':'gray'" name="star"></ion-icon>
+              <ion-icon [ngClass]="rev.rate >= 5 ? 'color-star':'gray'" name="star"></ion-icon>
+            </span>
+          </ion-label>
+        </ion-item>
+        <p class="review-content">
+          {{ rev.message }}
+          <span *ngIf="language == 'en'" class="ion-float-right">
+            <ion-toggle (ionChange)="changeStatus(rev.review_id)" (checked)="rev.report == 0" mode="ios"></ion-toggle>
+          </span>
+          <span *ngIf="language == 'ar'" class="ion-float-left">
+            <ion-toggle (ionChange)="changeStatus(rev.review_id)" (checked)="rev.report == 0" mode="ios"></ion-toggle>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="reviews && reviews.length == 0" class="no-data-big ion-text-center">
+    <ion-icon src="../../../assets/img/appicons/review.svg"></ion-icon>
+    <h2 class="title">{{'review.noR' | translate}}</h2>
+    <p class="text">{{'review.client' | translate}}</p>
+  </div>
+</ion-content>

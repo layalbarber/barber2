@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">{{'settins.label' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <h3 class="title">{{'settins.generalSett' | translate}}</h3>
+    <ion-list class="no-padding-top">
+        <ion-item button routerDirection="forward" routerLink="/editProfile" mode="md" detail="true">
+            <ion-thumbnail slot="start">
+                <ion-icon name="lock-open-outline"></ion-icon>
+            </ion-thumbnail>
+            <ion-label>{{'settins.userProfie' | translate}}</ion-label>
+        </ion-item>
+        <ion-item button routerDirection="forward" routerLink="/companySetting" mode="md" detail="true">
+            <ion-thumbnail slot="start">
+                <ion-icon name="create-outline"></ion-icon>
+            </ion-thumbnail>
+            <ion-label>{{'settins.companyProfie' | translate}}</ion-label>
+        </ion-item>
+        <ion-item button (click)="onLogOut()" mode="md" detail="true">
+            <ion-thumbnail slot="start">
+                <ion-icon name="log-out-outline"></ion-icon>
+            </ion-thumbnail>
+            <ion-label>{{'settins.logou' | translate}}</ion-label>
+        </ion-item>
+    </ion-list>
+    <h3 class="title">{{'settins.notificaion' | translate}}</h3>
+    <ion-item mode="md" (click)="push()">
+        <ion-label>{{'settins.emailNotification' | translate}}</ion-label>
+        <ion-toggle [(ngModel)]="mailnotification" [checked]="mailnotification == 1" mode="ios"></ion-toggle>
+    </ion-item>
+    <ion-item mode="md" (click)="helo()">
+        <ion-label>{{'settins.pushNotification' | translate}}</ion-label>
+        <ion-toggle [(ngModel)]="pushnotification" [checked]="pushnotification == 1" mode="ios"></ion-toggle>
+    </ion-item>
+    <h3 class="title">{{'settins.appSeting' | translate}}</h3>
+    <ion-item mode="md">
+        <ion-label>{{'settins.darkMode' | translate}}</ion-label>
+        <ion-toggle [(ngModel)]="theme" (ionChange)="changeTheme($event)" mode="ios"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>{{'settins.lang' | translate}}</ion-label>
+        <ion-select cancelText="{{'setting.Cancel' | translate}}" okText="{{'setting.ok' | translate}}" mode="md" [(ngModel)]="language" (ionChange)="changeLan()" [interfaceOptions]="option" placeholder="Language">
+            <ion-select-option value="en">{{'setting.english' | translate}}</ion-select-option>
+            <ion-select-option value="ar">{{'setting.arabic' | translate}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+  
+</ion-content>

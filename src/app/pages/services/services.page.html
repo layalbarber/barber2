@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">{{'services.label' | translate}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="addCategory()" fill="clear" mode="md">
+                <ion-icon name="add-sharp"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-input [(ngModel)]="searchKeyword" placeholder="{{'client.placeholder' | translate}}" class="search-input">
+        <ion-icon *ngIf="language == 'en'" class="right" src="../../../assets/img/appicons/search.svg"></ion-icon>
+        <ion-icon *ngIf="language == 'ar'" class="left" src="../../../assets/img/appicons/search.svg"></ion-icon>
+    </ion-input>
+
+    <div class="service-list" *ngFor="let category of items|filter:searchKeyword">
+        <h5 class="category-title" *ngIf="category?.service?.length >0">{{category?.name}}</h5>
+        <ng-container *ngFor="let service of category?.service;let i=index">
+            <ion-item lines="full" [ngClass]="{'border-top': i==0}">
+                <ion-avatar slot="start" (click)="updateService(service)">
+                    <img [src]="service?.imagePath+service?.image" />
+                </ion-avatar>
+                <ion-label (click)="updateService(service)">
+                    <h4 class="service-name">{{service?.name}}
+                    </h4>
+                </ion-label>
+                <ion-button fill="clear" (click)="serviceDelete(service.service_id)">
+                    <ion-icon name="trash"></ion-icon>
+                </ion-button>
+            </ion-item>
+        </ng-container>
+    </div>
+
+    <div *ngIf="items && items.length == 0" class="no-data-big ion-text-center">
+        <ion-icon src="../../../assets/img/appicons/tincture.svg"></ion-icon>
+        <h2 class="title">{{'services.noser' | translate}}</h2>
+        <p class="text">{{'services.client' | translate}}</p>
+    </div>
+
+</ion-content>

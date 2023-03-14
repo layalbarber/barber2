@@ -1,0 +1,27 @@
+ion-content {
+    ion-item {
+        ion-avatar {
+            height: 60px;
+            width: 60px;
+            img {
+                height: 60px;
+                width: 60px;
+                object-fit: cover;
+            }
+        }
+        ion-label {
+            h3 {
+                font-family: 'mon-medium';
+            }
+            p {
+                font-family: 'mon-regular';
+            }
+        }
+    }
+    .right {
+        ion-icon {
+            position: absolute;
+            left: 10px;
+        }
+    }
+}

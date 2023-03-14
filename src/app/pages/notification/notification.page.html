@@ -1,0 +1,20 @@
+<ion-header class="ion-no-border primary-header">
+    <ion-toolbar>
+        <ion-title class="ion-text-center animated fadeIn">{{'setting.label' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-item *ngFor="let item of notifications">
+        <ion-thumbnail slot="start">
+            <ngx-progressive-img-loader [height]="'100%'" [width]="'100%'" [placeholderBgColor]="'#ccc'" [placeholderImg]="'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png/revision/latest/scale-to-width-down/240?cb=20160927044640'"
+                [preserveAspectRatio]="true" [img]="item?.imagePath+item?.salonImage" [thumbnail]="'https://picsum.photos/200/200?image='" [fallbackImg]="'https://skirtingboardsdirect.com/wp-content/uploads/2014/12/Fallback-Image-600x600.png'">
+            </ngx-progressive-img-loader>
+        </ion-thumbnail>
+
+        <ion-label>
+            <h3>{{item?.title}}</h3>
+            <p>{{item?.msg}}</p>
+        </ion-label>
+    </ion-item>
+</ion-content>

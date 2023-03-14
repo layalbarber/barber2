@@ -1,0 +1,203 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar mode="ios">
+        <ion-title>{{'emp-detail.title' | translate}}</ion-title>
+        <ion-buttons slot="end" class="ion-no-margin">
+            <ion-button mode="md" class="btn-close">
+                <ion-back-button defaultHref="tabs/calendar" icon="close-outline" text=""></ion-back-button>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div (click)="albumSheet()" class="package-image">
+        <img [src]="galleryPreviewImage" alt="">
+    </div>
+
+    <ion-item lines="none">
+        <ion-label position="stacked">
+            {{'emp-detail.emal' | translate}}
+        </ion-label>
+        <ion-input [(ngModel)]="email" value="{{singleEmployee?.email}}" readonly></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+        <ion-label position="stacked">
+            {{'emp-detail.name' | translate}}
+        </ion-label>
+        <ion-input [(ngModel)]="name" value="{{singleEmployee?.name}}"></ion-input>
+    </ion-item>
+    <span class="err" *ngIf="errors">{{'emp-detail.emailErr' | translate}}</span>
+    <ion-item lines="none">
+        <ion-label position="stacked">{{'emp-detail.phone' | translate}}</ion-label>
+        <ion-input [(ngModel)]="phone" type="tel" value="{{singleEmployee?.phone}}"></ion-input>
+    </ion-item>
+
+    <div class="serviceat" *ngIf="singleEmployee?.give_service == 'Both'">
+        <ion-item class="ion-no-padding">
+            <ion-label>Give Service At</ion-label>
+            <ion-select (ionChange)="checsk($event)" value="{{singleEmployee?.give_service}}">
+                <ion-select-option *ngFor="let item of loop" value="{{item?.name}}">{{item?.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </div>
+
+    <span class="err" *ngIf="errorsPhone">{{'emp-detail.phoneEr' | translate}}</span>
+    <h5>{{'emp-detail.timing' | translate}}</h5>
+    <div [hidden]="singleEmployee?.sunday?.open == null">
+        <h3 class="to_label">{{'emp-detail.sunda' | translate}}</h3>
+        <ion-row class="">
+            <ion-col size="5" class="ion-no-padding">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" min="{{singleEmployee?.sunday?.open}}" [(ngModel)]="sunopen" mode="ios" value="{{singleEmployee?.sunday?.open}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <h3 class="to_label">{{'emp-detail.to' | translate }}</h3>
+            </ion-col>
+            <ion-col size="5" class="ion-no-padding">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" max="{{singleEmployee?.sunday?.close}}" [(ngModel)]="sunclose" mode="ios" value="{{singleEmployee?.sunday?.close}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div [hidden]="singleEmployee?.monday?.open == null">
+        <h3>{{'emp-detail.monday' | translate}}</h3>
+        <ion-row>
+            <ion-col size="5" class="ion-no-padding" style="padding-right: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" min="{{singleEmployee?.monday?.open}}" [(ngModel)]="monopen" mode="ios" value="{{singleEmployee?.monday?.open}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <h3 class="to_label">{{'emp-detail.to' | translate }}</h3>
+            </ion-col>
+            <ion-col size="5" class="ion-no-padding" style="padding-left: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" max="{{singleEmployee?.monday?.close}}" [(ngModel)]="monclose" mode="ios" value="{{singleEmployee?.monday?.close}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div [hidden]="singleEmployee?.tuesday?.open == null">
+        <h3>{{'emp-detail.tues' | translate}}</h3>
+        <ion-row>
+            <ion-col size="5" class="ion-no-padding" style="padding-right: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" min="{{singleEmployee?.tuesday?.open}}" [(ngModel)]="tueopen" mode="ios" value="{{singleEmployee?.tuesday?.open}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <h3 class="to_label">{{'emp-detail.to' | translate }}</h3>
+            </ion-col>
+            <ion-col size="5" class="ion-no-padding" style="padding-left: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" max="{{singleEmployee?.tuesday?.close}}" [(ngModel)]="tueclose" mode="ios" value="{{singleEmployee?.tuesday?.close}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div [hidden]="singleEmployee?.wednesday?.open == null">
+        <h3>{{'emp-detail.wednes' | translate}}</h3>
+        <ion-row>
+            <ion-col size="5" class="ion-no-padding" style="padding-right: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" min="{{singleEmployee?.wednesday?.open}}" [(ngModel)]="wedopen" mode="ios" value="{{singleEmployee?.wednesday?.open}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <h3 class="to_label">{{'emp-detail.to' | translate }}</h3>
+            </ion-col>
+            <ion-col size="5" class="ion-no-padding" style="padding-left: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" max="{{singleEmployee?.wednesday?.close}}" [(ngModel)]="wedclose" mode="ios" value="{{singleEmployee?.wednesday?.close}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div [hidden]="singleEmployee?.thursday?.open == null">
+        <h3>{{'emp-detail.thurs' | translate}}</h3>
+        <ion-row>
+            <ion-col size="5" class="ion-no-padding" style="padding-right: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" min="{{singleEmployee?.thursday?.open}}" [(ngModel)]="thuopen" mode="ios" value="{{singleEmployee?.thursday?.open}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <h3 class="to_label">{{'emp-detail.to' | translate }}</h3>
+            </ion-col>
+            <ion-col size="5" class="ion-no-padding" style="padding-left: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" max="{{singleEmployee?.thursday?.close}}" [(ngModel)]="thuclose" mode="ios" value="{{singleEmployee?.thursday?.close}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div [hidden]="singleEmployee?.friday?.open == null">
+        <h3>{{'emp-detail.friday' | translate}}</h3>
+        <ion-row>
+            <ion-col size="5" class="ion-no-padding" style="padding-right: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" min="{{singleEmployee?.friday?.open}}" [(ngModel)]="friopen" mode="ios" value="{{singleEmployee?.friday?.open}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <h3 class="to_label">{{'emp-detail.to' | translate }}</h3>
+            </ion-col>
+            <ion-col size="5" class="ion-no-padding" style="padding-left: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" max="{{singleEmployee?.friday?.close}}" [(ngModel)]="friclose" mode="ios" value="{{singleEmployee?.friday?.close}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div [hidden]="singleEmployee?.saturday?.open == null">
+        <h3>{{'emp-detail.sat' | translate}}</h3>
+        <ion-row>
+            <ion-col size="5" class="ion-no-padding" style="padding-right: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" min="{{singleEmployee?.saturday?.open}}" [(ngModel)]="satopen" mode="ios" value="{{singleEmployee?.saturday?.open}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <h3 class="to_label">{{'emp-detail.to' | translate }}</h3>
+            </ion-col>
+            <ion-col size="5" class="ion-no-padding" style="padding-left: 10px;">
+                <ion-item>
+                    <ion-datetime minuteValues="0,30,60" max="{{singleEmployee?.saturday?.close}}" [(ngModel)]="satclose" mode="ios" value="{{singleEmployee?.saturday?.close}}" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <h3>{{'emp-detail.service' | translate}}</h3>
+
+    <div class="check">
+        <div class="empcheck ion-padding-start ion-padding-end">
+            <ion-row *ngFor="let item of services;let i=i ndex">
+                <ion-col size="1">
+                    <ion-checkbox (ionChange)="checkEvent(item?.service_id)" [(ngModel)]="item.isChecked" [checked]="item.isChecked"></ion-checkbox>
+                </ion-col>
+                <ion-col size="11 ">
+                    <ion-item class="ion-no-padding" lines="none">
+                        <img src="{{item.imagePath + item.image}}" height="30px" width="30px">
+                        <ion-text>{{item.name}}</ion-text>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+
+    <ion-item>
+        <ion-label position="floating">{{'emp-detail.status' | translate}}</ion-label>
+        <ion-select mode="ios" placeholder="Select Status" cancelText="{{'setting.Cancel' | translate}}" okText="{{'setting.ok' | translate}}" (ionChange)="select(status)" [(ngModel)]="status" value="status == 1 : 'Active' : 'Deactive'">
+            <ion-select-option [value]="1">{{'emp-detail.acti'| translate}}</ion-select-option>
+            <ion-select-option [value]="0">{{'emp-detail.deac' | translate}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-button class="save" expand="full" (click)="editEmployee()" color="var(--ion-secondary-color)">
+        {{'emp-detail.save' | translate}}
+    </ion-button>
+</ion-content>

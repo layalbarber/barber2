@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="/"></ion-back-button>
+            <ion-button fill="clear" mode="md"></ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center absolute-center">{{'appointments.appointment' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="dorefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ngx-datatable [limit]="30" [columnMode]="ColumnMode.standard" class="draggable" [class.dark]="isDark"
+        [class.material]="!isDark" #table [rows]="rows" [sortType]="'multi'" [rowHeight]="50" [headerHeight]="50"
+        [scrollbarH]="true">
+        <ngx-datatable-column prop="booking_id">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                #
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="userDetails.name">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                {{'appointments.clint' | translate}}
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                {{value}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="date">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                {{'appointments.date' | translate}}
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="end_time">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                {{'appointments.time' | translate}}
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="empDetails.name" name="employee">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                {{'appointments.assign' | translate}}
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="payment">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                {{'appointments.paymen' | translate}}
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                {{currancy}}{{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="booking_status">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                {{'appointments.status' | translate}}
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                <div class="status">
+                </div> {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="booking_at">
+            <ng-template ngx-datatable-header-template="ngx-datatable-header-template">
+                Service At
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template="ngx-datatable-cell-template">
+                <div class="status">
+                </div>{{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</ion-content>

@@ -1,0 +1,207 @@
+<ion-header class="ion-no-border primary-header">
+    <ion-toolbar>
+        <ion-title *ngIf="active == 2" (click)="presentCalendarPicker()" class="ion-text-center">
+            {{viewTitle}}
+            <ion-icon style="position: relative; top: 3px;" name="caret-down-outline"></ion-icon>
+        </ion-title>
+        <ion-title *ngIf="active == 1" (click)="presentCalendarPicker()" class="ion-text-center">
+            {{'calendar.title' | translate}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="getStaff($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-item class="ion-no-padding" lines="none">
+        <ion-button (click)="changed(l.id)" *ngFor="let l of btn" [ngClass]="active == l.id ? 'red' : ''" mode="md"
+            class="ion-no-margin" slot="end" fill="clear">
+            <ion-icon name="{{l.name}}"></ion-icon>
+        </ion-button>
+    </ion-item>
+    <h4 *ngIf="active == 2" class="specialist-title ion-margin-start">
+        {{'calendar.salonSpecia' | translate}}
+    </h4>
+    <div *ngIf="active == 2" class="ion-no-padding employee-row">
+        <div *ngFor="let emp of staff" class="employee_col">
+            <div class="image-div" (click)="employee(emp)" [class.active]="emp.emp_id == id ? 'selectedEmp' : ''">
+                <ngx-progressive-img-loader [height]="'100%'" [width]="'100%'" [placeholderBgColor]="'#ccc'"
+                    [placeholderImg]="'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png/revision/latest/scale-to-width-down/240?cb=20160927044640'"
+                    [preserveAspectRatio]="true" [img]="emp.imagePath+emp.image"
+                    [thumbnail]="'https://picsum.photos/200/200?image='"
+                    [fallbackImg]="'https://skirtingboardsdirect.com/wp-content/uploads/2014/12/Fallback-Image-600x600.png'">
+                </ngx-progressive-img-loader>
+            </div>
+            <p class="emp-name ion-text-center">
+                {{ emp.name | slice:0:7}}
+            </p>
+            <p class="emp-deg ion-text-center">{{ emp.phone }}</p>
+        </div>
+    </div>
+
+    <calendar *ngIf="active == 2" [eventSource]="calendar.eventSource" [calendarMode]="calendar.mode"
+        [currentDate]="calendar.currentDate" (onCurrentDateChanged)="onCurrentDateChanged($event)"
+        (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
+        (onTimeSelected)="onTimeSelected($event)" step="30">
+    </calendar>
+
+    <ion-fab *ngIf="active == 2" class="animated slideInUp" horizontal="end" vertical="bottom" slot="fixed" mode="ios">
+        <ion-fab-button routerDirection="forward" routerLink="/selectServices">
+            <ion-icon name="calendar-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <div *ngIf="active == 1">
+        <ion-segment [(ngModel)]="select" mode="md" scrollable="true">
+            <ion-segment-button href="$UPCOMING" value="0">
+                <ion-label>{{'Appointment.Upcoming' | translate}}</ion-label>
+                <div class="dark-layer"></div>
+            </ion-segment-button>
+            <ion-segment-button href="#COMPLETED" value="1">
+                <ion-label>{{'Appointment.Completed' | translate}}</ion-label>
+                <div class="dark-layer"></div>
+            </ion-segment-button>
+        </ion-segment>
+
+        <div [ngSwitch]="select">
+            <div *ngSwitchCase="0">
+                <div *ngFor="let item of upComingAppointment | slice:0:20" class="upcoming ion-margin">
+                    <ion-row class="ion-padding-start ion-padding-end ion-padding-top" (click)="singleapp(item)">
+                        <ion-col size="3">
+                            <img src="{{item.userDetails.imagePath + item.userDetails.image}}" height="70px"
+                                width="70px" alt="">
+                        </ion-col>
+                        <ion-col size="9">
+                            <h1>{{item.userDetails.name}}</h1>
+                            <p class="address">{{item.booking_id}}</p>
+                            <p class="address">{{item.date}} {{item.start_time}}</p>
+                        </ion-col>
+                    </ion-row>
+                    <div class="hr"></div>
+                    <P class="address ion-padding-start">{{'Appointment.assign' | translate}} : {{item.empDetails.name}}
+                    </P>
+                    <div class="ion-padding-start ion-padding-end bottom">
+                        <div (click)="singleapp(item)">
+                            <p class="service">{{'Appointment.ServiceType' | translate}}</p>
+                            <div>
+                                <p class="serviceTypes">{{item.services[0].name}}</p>
+                            </div>
+                            <div *ngIf="item.isExpand == true">
+                                <p class="serviceTypes" *ngFor="let service of item.services; let i = index">
+                                    <ng-container *ngIf="i != 0">
+                                        {{item.services[i].name}}
+                                    </ng-container>
+                                </p>
+                            </div>
+                            <ion-label>
+                                <ion-button *ngIf="language == 'en'" fill="clear" class="ion-float-right">
+                                    {{curency}}{{item.payment}}
+                                </ion-button>
+                                <ion-button *ngIf="language == 'ar'" fill="clear" class="ion-float-left">
+                                    {{curency}}{{item.payment}}
+                                </ion-button>
+                            </ion-label><br>
+                            <ion-label>
+                                <ion-button *ngIf="language == 'en'" fill="clear" class="ion-float-right">
+                                    {{item.booking_status}}
+                                </ion-button>
+                                <ion-button *ngIf="language == 'ar'" fill="clear" class="ion-float-left">
+                                    {{item.booking_status}}
+                                </ion-button>
+                            </ion-label>
+                        </div>
+
+
+                        <p class="see" (click)="expandToogle(item)"
+                            *ngIf="item.services.length > 1 && isExpand == false">
+                            {{seemore}}
+                        </p>
+                        <p class="see" (click)="expandToogle(item)"
+                            *ngIf="item.services.length > 1 && isExpand == true">
+                            {{seemore}}
+                        </p>
+                    </div>
+                </div>
+
+
+                <div *ngIf="upComingAppointment && upComingAppointment.length == 0" class="no-da ion-text-center">
+                    <ion-icon src="../../../assets/img/appicons/no-user.svg"></ion-icon>
+                    <h2 class="title">{{'Appointment.noClient' | translate}}(</h2>
+                    <p class="text">{{'Appointment.user' | translate}}</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div [ngSwitch]="select">
+            <div *ngSwitchCase="1">
+                <div *ngFor="let item of approved | slice:0:20" class="upcoming ion-margin">
+                    <ion-row class="ion-padding-start ion-padding-end ion-padding-top" (click)="singleapp(item)">
+                        <ion-col size="3">
+                            <img src="{{item.userDetails.imagePath + item.userDetails.image}}" height="70px"
+                                width="70px" alt="">
+                        </ion-col>
+                        <ion-col size="9">
+                            <h1>{{item.userDetails.name}}</h1>
+                            <p class="address">{{item.booking_id}}</p>
+                            <p class="address">{{item.date}} {{item.start_time}}</p>
+                        </ion-col>
+                    </ion-row>
+                    <div class="hr"></div>
+                    <P class="address ion-padding-start">{{'Appointment.assign' | translate}} : {{item.empDetails.name}}
+                    </P>
+                    <div class="ion-padding-start ion-padding-end bottom">
+                        <div (click)="singleapp(item)">
+                            <p class="service">{{'Appointment.ServiceType' | translate}}</p>
+                            <div>
+                                <p class="serviceTypes">{{item.services[0].name}}</p>
+                            </div>
+                            <div *ngIf="item.isExpand == true">
+                                <p class="serviceTypes" *ngFor="let service of item.services; let i = index">
+                                    <ng-container *ngIf="i != 0">
+                                        {{item.services[i].name}}
+                                    </ng-container>
+                                </p>
+                            </div>
+                            <ion-label>
+                                <ion-button *ngIf="language == 'en'" fill="clear" class="ion-float-right">
+                                    {{curency}}{{item.payment}}
+                                </ion-button>
+                                <ion-button *ngIf="language == 'ar'" fill="clear" class="ion-float-left">
+                                    {{curency}}{{item.payment}}
+                                </ion-button>
+                            </ion-label><br>
+                            <ion-label>
+                                <ion-button *ngIf="language == 'en'" fill="clear" class="ion-float-right">
+                                    {{item.booking_status}}
+                                </ion-button>
+                                <ion-button *ngIf="language == 'ar'" fill="clear" class="ion-float-left">
+                                    {{item.booking_status}}
+                                </ion-button>
+                            </ion-label>
+                        </div>
+
+                        <p class="see" (click)="expandToogle(item)"
+                            *ngIf="item.services.length > 1 && isExpand == false">
+                            {{seemore}}
+                        </p>
+                        <p class="see" (click)="expandToogle(item)"
+                            *ngIf="item.services.length > 1 && isExpand == true">
+                            {{seemore}}
+                        </p>
+                    </div>
+                </div>
+
+
+                <div *ngIf="approved && approved.length == 0" class="no-da ion-text-center">
+                    <ion-icon src="../../../assets/img/appicons/no-user.svg"></ion-icon>
+                    <h2 class="title">{{'Appointment.noClient' | translate}}(</h2>
+                    <p class="text">{{'Appointment.user' | translate}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ion-content>

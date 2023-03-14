@@ -1,0 +1,42 @@
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div (click)="openViewer()" class="profile-image">
+        <img [src]="aboutCompany?.imagePath+aboutCompany?.image" alt="">
+    </div>
+    <h2 class="ion-text-center user-name">{{aboutCompany?.name}}</h2>
+    <p class="email">{{aboutCompany?.email}}</p>
+
+    <a routerDirection="forward" routerLink="/editProfile" class="btn-profile ion-text-center">{{'more.myPro' |
+        translate}}</a>
+
+    <ion-list class="ion-padding-horizontal">
+        <ion-item routerDirection="forward" routerLink="/dashboard" button lines="full" detail="true">
+            <ion-icon slot="start" name="stats-chart-outline"></ion-icon>
+            <ion-label>{{'more.dash' | translate}}</ion-label>
+        </ion-item>
+        <ion-item routerDirection="forward" routerLink="/staff" button lines="full" detail="true">
+            <ion-icon slot="start" name="briefcase-outline"></ion-icon>
+            <ion-label>{{'more.sta' | translate}}</ion-label>
+        </ion-item>
+        <ion-item routerDirection="forward" routerLink="/services" button lines="full" detail="true">
+            <ion-icon slot="start" name="document-text-outline"></ion-icon>
+            <ion-label>{{'more.ser' | translate}}</ion-label>
+        </ion-item>
+        <ion-item routerDirection="forward" routerLink="/gallery" button lines="full" detail="true">
+            <ion-icon slot="start" name="images-outline"></ion-icon>
+            <ion-label>{{'more.gal' | translate}}</ion-label>
+        </ion-item>
+        <ion-item routerDirection="forward" routerLink="/reviews" button lines="full" detail="true">
+            <ion-icon slot="start" name="star-half-outline"></ion-icon>
+            <ion-label>{{'more.revie'| translate}}</ion-label>
+        </ion-item>
+        <ion-item routerDirection="forward" routerLink="/setting" button lines="full" detail="true">
+            <ion-icon slot="start" name="settings-outline"></ion-icon>
+            <ion-label>{{'more.set' | translate}}</ion-label>
+        </ion-item>
+        <ion-item (click)="onLogOut()" button lines="full" detail="true">
+            <ion-icon slot="start" name="log-out-outline"></ion-icon>
+            <ion-label>{{'more.log' | translate}}</ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

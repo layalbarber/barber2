@@ -1,0 +1,125 @@
+<ion-header class="ion-no-border primary-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/clients" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center absolute-center">{{'clientProfie.clientPro' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="client_content">
+        <ion-avatar (click)="openViewer()">
+            <ngx-progressive-img-loader [height]="'100%'" [width]="'100%'" [placeholderBgColor]="'#ccc'"
+                [placeholderImg]="'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png/revision/latest/scale-to-width-down/240?cb=20160927044640'"
+                [preserveAspectRatio]="true" [img]="data?.user?.imagePath+data?.user?.image"
+                [thumbnail]="'https://picsum.photos/200/200?image='"
+                [fallbackImg]="'https://skirtingboardsdirect.com/wp-content/uploads/2014/12/Fallback-Image-600x600.png'">
+            </ngx-progressive-img-loader>
+        </ion-avatar>
+
+        <div class="clientDetail">
+            <h2 class="user-name">{{data?.user?.name}}</h2>
+            <div class="statistics">
+                <div class="bg-state">
+                    <div class="content sale">
+                        <h2 class="bg">{{data?.total_sales}}</h2>
+                        <p>{{'clientProfie.sales' | translate}}</p>
+                    </div>
+                    <div class="content outsatnding">
+                        <h2 class="bg">{{data?.outstanding}}</h2>
+                        <p>{{'clientProfie.outStanding' | translate}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="statistics">
+        <div class="sm-state">
+            <div class="content shadow">
+                <h2 class="ion-text-center">{{data?.all_booking?.length}}</h2>
+                <p class="ion-text-center">{{'clientProfie.allBoks' | translate}}</p>
+            </div>
+            <div class="content shadow">
+                <h2 class="ion-text-center">{{data?.approved}}</h2>
+                <p class="ion-text-center">{{'clientProfie.approved' | translate}}</p>
+            </div>
+            <div class="content shadow">
+                <h2 class="ion-text-center">{{data?.pending}}</h2>
+                <p class="ion-text-center">{{'clientProfie.pending' | translate}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statistics">
+        <div class="sm-state">
+            <div class="content shadow">
+                <h2 class="ion-text-center">{{data?.cancel}}</h2>
+                <p class="ion-text-center">{{'clientProfie.canceled' | translate}}</p>
+            </div>
+            <div class="content shadow">
+                <h2 class="ion-text-center">{{data?.completed}}</h2>
+                <p class="ion-text-center">{{'clientProfie.completed' | translate}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="segment">
+        <ion-button fill="Clear" (click)="segment='appointments'" [class.active]="segment=='appointments'"
+            class="active">
+            {{'clientProfie.appoinemt' | translate}}
+        </ion-button>
+    </div>
+
+    <div class="appointments animated fadeIn" *ngIf="segment==='appointments'">
+        <ion-list>
+            <ion-card *ngFor="let i of data?.all_booking">
+                <ion-item lines="none" button (click)="next(i.id)">
+                    <ion-label>
+                        <div class="date-indicate">
+                            <h2 class="date">{{i?.date | date:'dd'}}</h2>
+                            <p class="month">{{i?.date | date:'LLL'}}</p>
+                        </div>
+                        <div class="list-content">
+                            <p class="time">{{i?.date | date:'EEE'}} {{i?.end_time}} <span
+                                    class="label text-uppercase">{{i?.booking_status}}</span></p>
+                            <h2 class="services" *ngFor="let j of i?.serviceData;let l = last;">
+                                {{j?.serviceName}}[{{j?.service_id}}] <span *ngIf="!l">,</span> </h2>
+                            <p class="hours">{{i?.date | date:'EEE'}} with {{i?.empDetails?.name}}</p>
+                        </div>
+                        <h2 class="price">{{currency}}{{i?.payment}}</h2>
+                    </ion-label>
+                </ion-item>
+            </ion-card>
+        </ion-list>
+
+        <div *ngIf="client.appointment && client.appointment.length == 0" class="no-data-small ion-text-center">
+            <ion-icon src="../../../assets/img/appicons/scissors.svg"></ion-icon>
+            <h2 class="title">{{'clientProfie.noApoint' | translate}}</h2>
+            <p class="text">{{'clientProfie.use' | translate}}</p>
+        </div>
+    </div>
+
+    <div class="animated fadeIn ion-padding" *ngIf="segment==='products'">
+        <div class="no-data-small ion-text-center">
+            <ion-icon src="../../../assets/img/appicons/open.svg"></ion-icon>
+            <h2 class="title">{{'clientProfie.history' | translate}}</h2>
+            <p class="text">{{'clientProfie.client' | translate}}</p>
+        </div>
+    </div>
+
+    <div class="animated fadeIn ion-padding" *ngIf="segment==='invoices'">
+        <div class="no-data-small ion-text-center">
+            <ion-icon src="../../assets/img/appicons/computer.svg"></ion-icon>
+            <h2 class="title">{{'clientProfie.available' | translate}}</h2>
+            <p class="text">
+                <a
+                    href="https://saasmonks.in/App-Demo/thebarber-54521/public/owner/login">{{'clientProfie.clickHere' | translate}}</a>
+                {{'clientProfie.feature'}}
+            </p>
+        </div>
+    </div>
+
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-tabs (ionTabsWillChange)="setActiveTabIndex()">
+
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="calendar">
+            <ion-icon [class.active]="activeTabIndex==='/tabs/calendar'" [name]="activeTabIndex === '/tabs/calendar' ? 'calendar' : 'calendar-outline'"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="sales">
+            <ion-icon [class.active]="activeTabIndex==='/tabs/sales'" [name]="activeTabIndex === '/tabs/sales' ? 'clipboard' : 'clipboard-outline'"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="clients">
+            <ion-icon [class.active]="activeTabIndex==='/tabs/clients'" [name]="activeTabIndex === '/tabs/clients' ? 'people' : 'people-outline'"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="notification">
+            <ion-icon [class.active]="activeTabIndex==='/tabs/notification'" [name]="activeTabIndex === '/tabs/notification' ? 'notifications' : 'notifications-outline'"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="more">
+            <ion-icon [class.active]="activeTabIndex==='/tabs/more'" [name]="activeTabIndex === '/tabs/more' ? 'ellipsis-vertical-sharp' : 'ellipsis-vertical-outline'"></ion-icon>
+        </ion-tab-button>
+    </ion-tab-bar>
+
+</ion-tabs>

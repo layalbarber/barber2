@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border primary-header">
+    <ion-toolbar>
+        <ion-title class="ion-text-center animated fadeIn">{{'client.label' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="getClients($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-input [(ngModel)]="searchKeyword" placeholder="{{'client.placeholder' | translate}}" class="search-input">
+        <ion-icon *ngIf="language == 'en'" class="right" src="../../../assets/img/appicons/search.svg"></ion-icon>
+        <ion-icon *ngIf="language == 'ar'" class="left" src="../../../assets/img/appicons/search.svg"></ion-icon>
+    </ion-input>
+
+    <ion-list>
+        <ion-item routerDirection="forward" [routerLink]="'/clientProfile/'+i?.id" *ngFor="let i of clients|filter:searchKeyword" button lines="inset" detail="true">
+            <ion-avatar slot="start">
+                <ngx-progressive-img-loader [height]="'100%'" [width]="'100%'" [placeholderBgColor]="'#ccc'" [placeholderImg]="'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png/revision/latest/scale-to-width-down/240?cb=20160927044640'"
+                    [preserveAspectRatio]="true" [img]="i?.imagePath+i?.image" [thumbnail]="'https://picsum.photos/200/200?image='" [fallbackImg]="'https://skirtingboardsdirect.com/wp-content/uploads/2014/12/Fallback-Image-600x600.png'">
+                </ngx-progressive-img-loader>
+            </ion-avatar>
+            <ion-label>
+                <h3>{{i?.name}}</h3>
+                <p>{{i?.email}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+    <div *ngIf="clients && clients.length == 0" class="no-data-big ion-text-center">
+        <ion-icon src="../../../assets/img/appicons/no-user.svg"></ion-icon>
+        <h2 class="title">{{'client.noClient' | translate}}(</h2>
+        <p class="text">{{'client.user' | translate}}</p>
+    </div>
+
+    <ion-fab class="animated slideInUp" horizontal="end" vertical="bottom" slot="fixed" mode="ios">
+        <ion-fab-button routerDirection="forward" routerLink="/addClients">
+            <ion-icon name="person-add-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

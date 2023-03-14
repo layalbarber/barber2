@@ -1,0 +1,26 @@
+@import "../theme/fonts.scss";
+@import "../theme/toast.scss";
+@import "../theme/dark-theme.scss";
+:root {
+    --ion-color-primary: #000000;
+    --ion-color-darkYellow: #ffde14;
+    --ion-color-secondary: #E06287;
+    --green-color: #36bd66;
+    --blue-color: blue;
+    --ion-color-white: #ffffff;
+    --ion-color-green: #36bd66;
+    --ion-color-blue: #091167;
+    --ion-color-orange: #E06287;
+    --ion-color-gray: #858585;
+    --ion-color-lightDark: #333333;
+    --ion-input-back: #f0f0f0;
+    --ion-placeholder-color: #9b9b9b;
+    --ion-color-lightGray: #666666;
+    --ion-color-MiddleGray: #333333;
+    --ion-color-simpleDark: #999999;
+    --ion-searchBack-color: #dfdfdf;
+    --ion-border-color: #cccccc;
+    --ion-color-white-light: #f8f8f8;
+    /* --ion-color-gradient: linear-gradient(to right, #cc1db9, #FF2891); */
+    --ion-color-gradient: #E06287;
+}

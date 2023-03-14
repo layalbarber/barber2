@@ -1,0 +1,18 @@
+<ion-content class="ion-padding">
+    <div *ngIf="isFrom != 'service'" class="ion-text-center first">
+        {{'delete.label1' | translate}}
+    </div>
+    <div *ngIf="isFrom == 'service'" class="ion-text-center first">
+        {{'delete.label2' | translate}}
+    </div>
+    <div class="ion-text-end second">
+        <ion-button (click)="close()" class="firstbtn" fill="clear">
+            <ion-ripple-effect></ion-ripple-effect>
+            {{'delete.cancel' | translate}}
+        </ion-button>
+        <ion-button (click)="delete()" class="secondbtn" fill="clear">
+            <ion-ripple-effect></ion-ripple-effect>
+            {{'delete.ok' | translate}}
+        </ion-button>
+    </div>
+</ion-content>

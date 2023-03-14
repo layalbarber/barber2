@@ -1,0 +1,13 @@
+ion-content {
+    .masonry-with-columns {
+        column-count: 2;
+        img {
+            width: max-content;
+            margin-bottom: 11px;
+            border-radius: 12px;
+        }
+    }
+    ion-fab-button {
+        --background: var(--ion-color-secondary);
+    }
+}

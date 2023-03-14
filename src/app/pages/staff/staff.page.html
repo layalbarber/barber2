@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="tabs/more"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">{{'staff.empl' | translate}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="addStaff()" fill="clear" mode="md">
+                <ion-icon name="add-sharp"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-input [(ngModel)]="searchKeyword" placeholder="{{'staff.placeholer' | translate}}" class="search-input"
+        style="margin-bottom: 20px;">
+        <ion-icon src="../../../assets/img/appicons/search.svg" class="search_icon"></ion-icon>
+    </ion-input>
+
+    <ion-card *ngFor="let item of staff|filter:searchKeyword">
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <img [src]="item?.imagePath+item?.image">
+            </ion-avatar>
+            <ion-label>
+                <h2 class="doctor-name margin-bottom-4 margin-top-11">{{item?.first_name}} {{item?.last_name}}</h2>
+                <h3 button (click)="employee(item)" class="specialist margin-bottom-4">
+                    {{item?.name | slice:0:10}}<span *ngIf="item?.name.length > 10">...</span>
+                </h3>
+                <p class="location">
+                </p>
+                <span *ngIf="language == 'en'" class="ion-float-right">
+                    <ion-button (click)="modacl(item.emp_id)" fill="clear">
+                        <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                </span>
+                <span *ngIf="language == 'ar'" class="ion-float-left">
+                    <ion-button (click)="modacl(item.emp_id)" fill="clear">
+                        <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                </span>
+            </ion-label>
+        </ion-item>
+        <div button (click)="employee(item)" class="other-info margin-top-10 margin-bottom-13">
+            <div>
+                <h2>{{'staff.emai' | translate}}</h2>
+                <h3>{{item?.email}}</h3>
+            </div>
+            <div>
+                <h2>{{'staff.phone' | translate}}</h2>
+                <h3>{{item?.phone}}</h3>
+            </div>
+        </div>
+    </ion-card>
+
+    <div *ngIf="staff && staff?.length == 0" class="no-data-big ion-text-center">
+        <ion-icon src="../../../assets/img/appicons/staff.svg"></ion-icon>
+        <h2 class="title">{{'staff.err' | translate}}</h2>
+        <p class="text">{{'staff.staff' | translate}}</p>
+    </div>
+
+</ion-content>

@@ -1,0 +1,112 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="tabs/calendar"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center absolute-center">{{'select-servies.title' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-margin-top">
+        <ion-item class="ion-no-padding" lines="none">
+            <ion-label>{{'select-servies.clien' | translate}}</ion-label>
+            <ion-select (ionChange)="select($event)" placeholder="{{'select-servies.clien' | translate}}">
+                <ion-select-option *ngFor="let item of clients" value="{{item?.id}}">{{item?.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item (click)="service()" lines="none" class="ion-no-padding">
+            <ion-label>{{'select-servies.selectSer' | translate}}</ion-label>
+        </ion-item>
+
+        <div class="btn_div">
+            <ion-button class="ion-text-capitalize" [ngClass]="s==c.name ? 'active' : 'segment_btn' "
+                *ngFor="let c of category" (click)="btnChanged(c.name)" value="c.name">
+                {{c.name}}
+                <ion-ripple-effect></ion-ripple-effect>
+            </ion-button>
+        </div>
+
+        <div>
+            <div class="ion-padding-start ion-padding-end">
+                <ion-row *ngFor="let item of services;let i=i ndex" (click)="verifyEvent(item.service_id)">
+                    <ion-col size="1">
+                        <ion-checkbox [checked]="item.isItemChecked == true"></ion-checkbox>
+                    </ion-col>
+                    <ion-col size="11 ">
+                        <ion-item class="ion-no-padding" lines="none">
+                            <img src="{{item.imagePath + item.image}}" height="32px" width="32px" />
+                            <ion-text>{{item.name}}</ion-text>
+                            <ion-text style="color: var(--input-text-color)" slot="end">{{currency}}{{item.price}}
+                            </ion-text>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <ion-item *ngIf="total > 0" class="ion-no-padding" lines="none">
+                <ion-label>{{'select-servies.total' | translate}}</ion-label>
+                <ion-text slot="end">{{currency}}{{total}}</ion-text>
+            </ion-item>
+
+        </div>
+    </div>
+
+    <ion-item class="ion-no-padding" lines="none">
+        <ion-label>
+            {{'select-servies.Booking_At' | translate}}
+        </ion-label>
+        <ion-select (ionChange)="checkSelect($event)">
+            <ion-select-option value="Home"> Home </ion-select-option>
+            <ion-select-option value="Salon"> Salon </ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="booking_at == 'Home'" (click)="addressSelect()" [disabled]="id==null">
+        <ion-label *ngIf="address == null">Select Address</ion-label>
+        <ion-label *ngIf="address !== null">{{address?.street}} {{address?.city}}</ion-label>
+    </ion-item>
+
+    <ion-item class="ion-no-padding" lines="none">
+        <ion-label>{{'select-servies.date' | translate}}</ion-label>
+        <ion-datetime placeholder="Select Your Date" [min]="date" max="2030" id="dynamicDisabled"
+            (ionChange)="mydate($event)" displayFormat="YYYY-MM-DD">
+        </ion-datetime>
+    </ion-item>
+    <div *ngIf="objdate != null">
+        <h5 class="info-title">{{'select-servies.chhoseti' | translate}}</h5>
+        <ion-row>
+            <ion-col size="3" *ngFor="let slot of time" class="ion-no-padding">
+                <div class="time-slot" [ngClass]="selectBtn == slot.start_time ? 'active' : 'segment_btn'"
+                    (click)="activeSlot(slot.start_time)">
+                    {{slot.start_time}}
+                </div>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div *ngIf="selectBtn != null">
+        <h5 class="info-title">{{'select-servies.selectEmp' | translate}}</h5>
+        <div class="check">
+            <div class="ion-padding-start ion-padding-end">
+                <ion-row *ngFor="let item of emp;let i = index" (click)="verifyEmp(item.emp_id)">
+                    <ion-col size="0.5">
+                        <ion-checkbox [checked]="item.isItemChecked == true"></ion-checkbox>
+                    </ion-col>
+                    <ion-col size="11.5">
+                        <ion-item class="ion-no-padding" lines="none">
+                            <img style="border-radius: 20px" src="{{item.imagePath + item.image}}" height="35px"
+                                width="35px" />
+                            <ion-text>{{item.name}}</ion-text>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+    </div>
+
+</ion-content>
+<ion-footer class="ion-no-border" [hidden]="isBook == false">
+    <ion-toolbar class="ion-no-padding">
+        <ion-button class="btnLa" expand="full" (click)="book()">{{'select-servies.bookow' | translate}}</ion-button>
+    </ion-toolbar>
+</ion-footer>

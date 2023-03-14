@@ -1,0 +1,356 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button mode="md" icon="chevron-back-sharp" defaultHref="signin"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">{{'addSalon.title' | translate}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill="clear" mode="md">
+                <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-horizontal">
+    <ion-row class="ion-text-center">
+        <ion-col size="6">
+            <div class="profile-image">
+                <img [src]="galleryPreviewImage ? galleryPreviewImage : image" alt="" />
+                <div (click)="albumSheet()" class="pluse-icon">
+                    <ion-icon name="add-outline"></ion-icon>
+                </div>
+            </div>
+            <ion-label>{{'addSalon.imagLabel1' | translate}}</ion-label><br>
+            <span class="err" *ngIf="imagePreview == '' && isLog == true && language == 'en'">Image is Required</span>
+            <span class="err" *ngIf="imagePreview == '' && isLog == true && language == 'ar'">الصورة مطلوبة</span>
+        </ion-col>
+        <ion-col size="6">
+            <div class="profile-image">
+                <img [src]="logoPreviewImage ? logoPreviewImage : imageL" alt="" />
+                <div (click)="logoSheet()" class="pluse-icon">
+                    <ion-icon name="add-outline"></ion-icon>
+                </div>
+            </div>
+            <ion-label>{{'addSalon.imagLabel2' | translate}}</ion-label><br>
+            <span class="err" *ngIf="logoUril == '' && isLog == true && language == 'en'">Logo is Required</span>
+            <span class="err" *ngIf="logoUril == '' && isLog == true && language == 'ar'">الشعار مطلوب</span>
+        </ion-col>
+    </ion-row>
+
+    <h3 class="info-title">{{'addSalon.salonDetail' | translate}}</h3>
+    <ion-item>
+        <ion-label position="floating">{{'addSalon.companyName' | translate}}</ion-label>
+        <ion-input [(ngModel)]="name" type="text"></ion-input>
+    </ion-item>
+    <span class="err" *ngIf="name == '' && isLog == true && language == 'en'">Name field is Required</span>
+    <span class="err" *ngIf="name == '' && isLog == true && language == 'ar'">حقل الاسم مطلوب</span>
+    <ion-item>
+        <ion-label position="floating">{{'addSalon.phone' | translate}}</ion-label>
+        <ion-input [(ngModel)]="phone" type="tel"></ion-input>
+    </ion-item>
+    <span class="err" *ngIf="phone == '' && isLog == true && language == 'en'">Phone field is Required</span>
+    <span class="err" *ngIf="phone == '' && isLog == true && language == 'ar'">حقل الهاتف مطلوب.</span>
+    <ion-item>
+        <ion-label position="floating">{{'addSalon.website' | translate}}</ion-label>
+        <ion-input [(ngModel)]="website" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">{{'addSalon.address' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="address" type="tel"></ion-textarea>
+    </ion-item>
+    <span class="err" *ngIf="address == ''">{{errors?.address[0]}}</span>
+    <ion-row>
+        <ion-col size="6" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.City' | translate}}</ion-label>
+                <ion-input [(ngModel)]="city" type="text"></ion-input>
+            </ion-item>
+            <span class="err" *ngIf="city == ''">{{errors?.city[0]}}</span>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.state' | translate}}</ion-label>
+                <ion-input [(ngModel)]="state" type="text"></ion-input>
+            </ion-item>
+            <span class="err" *ngIf="state ==  ''  && isLog == true && language == 'en'">State Field is Required</span>
+            <span class="err" *ngIf="state ==  ''  && isLog == true && language == 'ar'">حقل الولاية مطلوب</span>
+        </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col size="6" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.zip' | translate}}</ion-label>
+                <ion-input [(ngModel)]="zipcode" type="tel"></ion-input>
+            </ion-item>
+            <span class="err" *ngIf="zipcode == '' && isLog == true && language == 'en'">Zipcode Field is
+                Required</span>
+            <span class="err" *ngIf="zipcode == '' && isLog == true && language == 'ar'">حقل الرمز البريدي مطلوب</span>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.country' | translate}}</ion-label>
+                <ion-input [(ngModel)]="country" type="text"></ion-input>
+            </ion-item>
+            <span class="err" *ngIf="country == ''">{{errors?.country[0]}}</span>
+        </ion-col>
+    </ion-row>
+
+    <ion-item class="ion-no-padding">
+        <ion-label>Give Service At</ion-label>
+        <ion-select (ionChange)="checsk($event)">
+            <ion-select-option *ngFor="let item of loop" value="{{item?.name}}">{{item?.name}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <span class="err" *ngIf="errors?.give_service">{{errors?.give_service}}</span>
+    <br>
+
+    <ion-item class="ion-no-padding" *ngIf="selectService == 'Both' || selectService == 'Home'">
+        <ion-input placeholder="Extra Charge" type="number" [(ngModel)]="home_charges"></ion-input>
+    </ion-item>
+    <span class="err" *ngIf="errors?.home_charges && language == 'en'">The Extra Charge field is required</span>
+    <span class="err" *ngIf="errors?.home_charges && language == 'ar'">حقل الرسوم الإضافية مطلوب</span>
+    <br>
+    <ion-label class="label">{{'addSalon.sunday' | translate}}</ion-label>
+    <ion-row>
+        <ion-col size="5" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonOpenTime' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{sunCheck.checked == true}}"
+                    (ionChange)="check(sunopen)" [(ngModel)]="sunopen" displayFormat="HH:mm" pickerFormat="HH:mm">
+                </ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="sunopen == '' && isLogsun == true && language == 'en'">Sunday Open Field is
+                Required</span>
+            <span class="err" *ngIf="sunopen == '' && isLogsun == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonClose' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{sunCheck.checked == true}}" [(ngModel)]="sunclose"
+                    (ionChange)="check2(sunclose)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="sunclose == '' && isLogsun == true && language == 'en'">Sunday Close Field is
+                Required</span>
+            <span class="err" *ngIf="sunclose == '' && isLogsun == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="2">
+            <ion-checkbox [(ngModel)]="sunCheck.checked" checked name="wch" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+        </ion-col>
+    </ion-row>
+
+    <ion-label class="label">{{'addSalon.monda' | translate}}</ion-label>
+    <ion-row>
+        <ion-col size="5" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonOpenTime' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{monCheck.checked == true}}" [(ngModel)]="monopen"
+                    (ionChange)="check3(monopen)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="monopen == '' && isLogmon == true && language == 'en'">Monday Open Field is
+                Required</span>
+            <span class="err" *ngIf="monopen == '' && isLogmon == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonClose' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{monCheck.checked == true}}" [(ngModel)]="monclose"
+                    (ionChange)="check4(monclose)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="monclose == '' && isLogmon == true && language == 'en'">Monday Close Field is
+                Required</span>
+            <span class="err" *ngIf="monclose == '' && isLogmon == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="2">
+            <ion-checkbox [(ngModel)]="monCheck.checked" checked name="wch" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+        </ion-col>
+    </ion-row>
+
+    <ion-label class="label">{{'addSalon.tuesday' | translate}}</ion-label>
+    <ion-row>
+        <ion-col size="5" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonOpenTime' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{tueCheck.checked == true}}" [(ngModel)]="tueopen"
+                    (ionChange)="check5(tueopen)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="tueopen == '' && isLogtue == true && language == 'en' ">Tuesday open field is
+                Required</span>
+            <span class="err" *ngIf="tueopen == '' && isLogtue == true && language == 'ar' ">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonClose' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{tueCheck.checked == true}}" [(ngModel)]="tueclose"
+                    (ionChange)="check6(tueclose)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="tueclose == '' && isLogtue == true && language == 'en' ">Tuesday Close field is
+                Required</span>
+            <span class="err" *ngIf="tueclose == '' && isLogtue == true && language == 'ar' ">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="2">
+            <ion-checkbox [(ngModel)]="tueCheck.checked" checked name="wch" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+        </ion-col>
+    </ion-row>
+
+    <ion-label class="label">{{'addSalon.wednesday' | translate}}</ion-label>
+    <ion-row>
+        <ion-col size="5" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonOpenTime' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{wedCheck.checked == true}}" [(ngModel)]="wedopen"
+                    (ionChange)="check7(wedopen)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="wedopen == '' && isLogwed == true && language == 'en'">Wednesday Open Field is
+                Required</span>
+            <span class="err" *ngIf="wedopen == '' && isLogwed == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonClose' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{wedCheck.checked == true}}" [(ngModel)]="wedclose"
+                    (ionChange)="check8(wedclose)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf=" wedclose == '' && isLogwed == true && language == 'en'">Wednesday Close Field is
+                Required</span>
+            <span class="err" *ngIf=" wedclose == '' && isLogwed == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="2">
+            <ion-checkbox [(ngModel)]="wedCheck.checked" checked name="wch" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+        </ion-col>
+    </ion-row>
+
+    <ion-label class="label">{{'addSalon.thursday' | translate}}</ion-label>
+    <ion-row>
+        <ion-col size="5" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonOpenTime' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{thuCheck.checked == true}}" [(ngModel)]="thuopen"
+                    (ionChange)="check9(thuopen)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="thuopen == '' && isLogthu == true && language == 'en'">Thursday open field is
+                required</span>
+            <span class="err" *ngIf="thuopen == '' && isLogthu == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonClose' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{thuCheck.checked == true}}" [(ngModel)]="thuclose"
+                    (ionChange)="check10(thuclose)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="thuclose == '' && isLogthu == true && language == 'en'">Thursday close field is
+                required</span>
+            <span class="err" *ngIf="thuclose == '' && isLogthu == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="2">
+            <ion-checkbox [(ngModel)]="thuCheck.checked" checked name="wch" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+        </ion-col>
+    </ion-row>
+
+    <ion-label class="label">{{'addSalon.friday' | translate}}</ion-label>
+    <ion-row>
+        <ion-col size="5" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonOpenTime' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{friCheck.checked == true}}" [(ngModel)]="friopen"
+                    (ionChange)="check11(friopen)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="friopen == '' && isLogfri == true && language == 'en'">Friday open field is
+                required</span>
+            <span class="err" *ngIf="friopen == '' && isLogfri == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonClose' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{friCheck.checked == true}}" [(ngModel)]="friclose"
+                    (ionChange)="check12(friclose)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="friclose == '' && isLogfri == true && language == 'en'">Friday close field is
+                required</span>
+            <span class="err" *ngIf="friclose == '' && isLogfri == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="2">
+            <ion-checkbox [(ngModel)]="friCheck.checked" checked name="wch" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+        </ion-col>
+    </ion-row>
+
+    <ion-label class="label">{{'addSalon.saturday' | translate}}</ion-label>
+    <ion-row>
+        <ion-col size="5" class="ion-no-padding" style="padding-right: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonOpenTime' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{satCheck.checked == true}}" [(ngModel)]="satopen"
+                    (ionChange)="check13(satopen)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="satopen == '' && isLogsat == true && language == 'en'">Saturday open field is
+                required</span>
+            <span class="err" *ngIf="satopen == '' && isLogsat == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding" style="padding-left: 10px">
+            <ion-item>
+                <ion-label position="floating">{{'addSalon.salonClose' | translate}}</ion-label>
+                <ion-datetime minuteValues="0,30,60" disabled="{{satCheck.checked == true}}" [(ngModel)]="satclose"
+                    (ionChange)="check14(satclose)" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+            </ion-item>
+            <span class="err" *ngIf="satclose == '' && isLogsat == true && language == 'en'">Saturday Close field is
+                required</span>
+            <span class="err" *ngIf="satclose == '' && isLogsat == true && language == 'ar'">من فضلك إملأ الحقل
+                الاتي</span>
+        </ion-col>
+        <ion-col size="2">
+            <ion-checkbox [(ngModel)]="satCheck.checked" checked name="wch" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+        </ion-col>
+    </ion-row>
+
+    <ion-item>
+        <ion-label position="floating">{{'addSalon.description' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="desc" type="tel"></ion-textarea>
+    </ion-item>
+    <span class="err" *ngIf="desc == '' && language == 'en' && isLog == true">Descrition field is Required</span>
+    <span class="err" *ngIf="desc == '' && language == 'ar' && isLog == true">مطلوب حقل الوصف</span>
+    <ion-radio-group value="Male" (ionChange)="changeGender($event)">
+        <ion-row>
+            <ion-col size="4">
+                <ion-item lines="none">
+                    <ion-radio value="Male"></ion-radio>{{'addSalon.male' | translate}}
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+                <ion-item lines="none">
+                    <ion-radio value="Female"></ion-radio>{{'addSalon.female' | translate}}
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+                <ion-item lines="none">
+                    <ion-radio value="Both"></ion-radio>{{'addSalon.both' | translate}}
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-radio-group>
+
+
+    <ion-button (click)="save()" expand="block" class="ion-no-margin btn-save">{{'addSalon.save' | translate}}
+    </ion-button>
+
+</ion-content>

@@ -1,0 +1,15 @@
+<ion-header class="ion-no-border primary-header">
+    <ion-toolbar>
+        <ion-title class="ion-text-center animated fadeIn">{{'sale.nam' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item routerDirection="forward" routerLink="/appointments" button detail="true" lines="full">
+        <ion-icon slot="start" name="calendar-outline"></ion-icon>
+        <ion-label [ngClass]="language == 'ar' ? 'label2' : 'label'">
+            <h4 class="title">{{'sale.appoinetn' | translate}}</h4>
+            <p class="ion-text-wrap">{{'sale.listOf' | translate}}</p>
+        </ion-label>
+    </ion-item>
+</ion-content>
