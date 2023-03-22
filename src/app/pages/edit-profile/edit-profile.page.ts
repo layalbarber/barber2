@@ -4,6 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/services/api.service";
 import { Camera } from "@ionic-native/camera/ngx";
 import { countryCode } from "src/environments/environment";
+import { AlertController, NavController } from "@ionic/angular";
 @Component({
   selector: "app-edit-profile",
   templateUrl: "./edit-profile.page.html",
@@ -30,6 +31,9 @@ export class EditProfilePage implements OnInit {
     private util: UtilService,
     private api: ApiService,
     private formBuilder: FormBuilder,
+    private navCtrl: NavController,
+   
+    private alertCtrl: AlertController,
     private camera: Camera
   ) {
     this.myForm = this.formBuilder.group({
@@ -243,4 +247,28 @@ export class EditProfilePage implements OnInit {
     }
     return `${hours}:${minutes}`;
   };
+  deleteMyAccount(){
+    this.alertCtrl.create({
+      header:'Delete Account',
+      message: 'this process will take 48 hours to complete',
+      backdropDismiss: true,
+      buttons: [{
+        text: 'cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Application exit prevented!');
+        }
+      }, {
+        text:'ok',
+        handler: () => {
+          localStorage.removeItem('admin_token'); 
+    this.util.navCtrl.navigateRoot('signin');
+        }
+      }]
+    })
+      .then(alert => {
+        alert.present();
+      });
+ 
+  }
 }
